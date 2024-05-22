@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.controller;
 
+import com.travelertown.travelertown.dto.SigninReqDto;
 import com.travelertown.travelertown.dto.SignupReqDto;
 import com.travelertown.travelertown.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class AuthController {
         System.out.println(signupReqDto);
         authService.signup(signupReqDto);
         return ResponseEntity.created(null).body(true);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> signin(@RequestBody SigninReqDto signinReqDto) {
+        System.out.println(signinReqDto);
+        return ResponseEntity.ok(authService.signin(signinReqDto));
     }
 }
