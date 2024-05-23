@@ -1,7 +1,7 @@
-package com.travelertown.travelertown.controller;
+package com.travelertown.travelertown.controller.auth;
 
-import com.travelertown.travelertown.dto.SigninReqDto;
-import com.travelertown.travelertown.dto.SignupReqDto;
+import com.travelertown.travelertown.dto.auth.SigninReqDto;
+import com.travelertown.travelertown.dto.auth.SignupReqDto;
 import com.travelertown.travelertown.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
