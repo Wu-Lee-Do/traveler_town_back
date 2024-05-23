@@ -1,7 +1,7 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.SigninReqDto;
-import com.travelertown.travelertown.dto.SignupReqDto;
+import com.travelertown.travelertown.dto.auth.SigninReqDto;
+import com.travelertown.travelertown.dto.auth.SignupReqDto;
 import com.travelertown.travelertown.entity.User;
 import com.travelertown.travelertown.exception.SaveException;
 import com.travelertown.travelertown.jwt.JwtProvider;

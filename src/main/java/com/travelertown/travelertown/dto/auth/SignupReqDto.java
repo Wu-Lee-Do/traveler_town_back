@@ -1,4 +1,4 @@
-package com.travelertown.travelertown.dto;
+package com.travelertown.travelertown.dto.auth;
 
 import com.travelertown.travelertown.entity.User;
 import lombok.Data;
