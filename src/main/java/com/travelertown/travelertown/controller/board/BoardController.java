@@ -21,7 +21,6 @@ public class BoardController {
 
     @GetMapping("/all")
     public ResponseEntity<?> getBoard(@RequestParam int boardCategoryId) {
-        System.out.println(boardCategoryId);
         return ResponseEntity.ok().body(boardService.getBoard(boardCategoryId));
     }
 }

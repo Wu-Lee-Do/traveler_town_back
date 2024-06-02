@@ -4,11 +4,20 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.travelertown.travelertown.repository.BoardMapper">
+    <resultMap id="BoardResultMap" type="com.travelertown.travelertown.entity.Board">
+        <id property="boardId" column="board_id"/>
+        <result property="boardCategoryId" column="board_category_id"/>
+        <result property="boardTitle" column="board_title"/>
+        <result property="boardContent" column="board_content"/>
+        <result property="userId" column="user_id"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateDate" column="update_date"/>
+    </resultMap>
     <insert id="saveBoard" parameterType="com.travelertown.travelertown.entity.Board">
         insert into board_tb
         values(0, #{boardCategoryId}, #{boardTitle}, #{boardContent}, #{userId}, now(), now())
     </insert>
-    <select id="getBoard" resultType="com.travelertown.travelertown.entity.Board">
+    <select id="getBoard" resultMap="BoardResultMap">
         select
             *
         from
