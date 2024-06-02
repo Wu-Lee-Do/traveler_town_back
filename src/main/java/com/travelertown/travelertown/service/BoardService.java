@@ -6,6 +6,8 @@ import com.travelertown.travelertown.repository.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BoardService {
 
@@ -15,5 +17,9 @@ public class BoardService {
     public int saveBoard(NewBoardReqDto newBoardReqDto){
         Board board = newBoardReqDto.toEntity();
         return boardMapper.saveBoard(board);
+    }
+
+    public List<Board> getBoard(int boardCategoryId){
+        return boardMapper.getBoard(boardCategoryId);
     }
 }
