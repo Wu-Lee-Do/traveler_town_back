@@ -8,4 +8,12 @@
         insert into board_tb
         values(0, #{boardCategoryId}, #{boardTitle}, #{boardContent}, #{userId}, now(), now())
     </insert>
+    <select id="getBoard" resultType="com.travelertown.travelertown.entity.Board">
+        select
+            *
+        from
+            board_tb
+        where
+            board_category_id = #{boardCategoryId}
+    </select>
 </mapper>

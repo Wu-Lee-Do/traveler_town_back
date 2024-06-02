@@ -16,4 +16,8 @@ public class BoardService {
         Board board = newBoardReqDto.toEntity();
         return boardMapper.saveBoard(board);
     }
+
+    public Board getBoard(int boardCategoryId){
+        return boardMapper.getBoard(boardCategoryId);
+    }
 }
