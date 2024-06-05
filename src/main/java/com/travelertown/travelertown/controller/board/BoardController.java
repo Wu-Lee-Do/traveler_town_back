@@ -23,4 +23,9 @@ public class BoardController {
     public ResponseEntity<?> getBoard(@RequestParam int boardCategoryId) {
         return ResponseEntity.ok().body(boardService.getBoard(boardCategoryId));
     }
+
+    @DeleteMapping("/remove")
+    public ResponseEntity<?> removeBoard(@RequestParam int boardId) {
+        return ResponseEntity.ok().body(boardService.removeBoard(boardId));
+    }
 }

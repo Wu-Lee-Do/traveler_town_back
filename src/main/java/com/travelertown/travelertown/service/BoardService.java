@@ -22,4 +22,8 @@ public class BoardService {
     public List<Board> getBoard(int boardCategoryId){
         return boardMapper.getBoard(boardCategoryId);
     }
+
+    public int removeBoard(int boardId){
+        return boardMapper.deleteBoard(boardId);
+    }
 }

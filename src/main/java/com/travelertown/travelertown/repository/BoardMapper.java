@@ -9,4 +9,5 @@ import java.util.List;
 public interface BoardMapper {
     public int saveBoard(Board board);
     public List<Board> getBoard(int boardCategoryId);
+    public int deleteBoard(int boardId);
 }
