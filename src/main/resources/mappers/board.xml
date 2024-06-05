@@ -25,4 +25,11 @@
         where
             board_category_id = #{boardCategoryId}
     </select>
+    <delete id="deleteBoard" parameterType="int">
+        delete
+        from
+            board_tb
+        where
+            board_id = #{boardId}
+    </delete>
 </mapper>
