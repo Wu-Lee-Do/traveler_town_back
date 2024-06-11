@@ -47,10 +47,10 @@ public class AuthService {
         User user = userMapper.findUserByUsername(signinReqDto.getUsername());
 
         if(user == null) { // id가 틀림
-            throw new UsernameNotFoundException("사용자 정보를 확인하세요");
+            throw new UsernameNotFoundException("사용자 정보를 확인하세요 아이디");
         }
         if (!passwordEncoder.matches(signinReqDto.getPassword(), user.getPassword())) { // 비밀번호가 틀림
-            throw new BadCredentialsException("사용자 정보를 확인하세요");
+            throw new BadCredentialsException("사용자 정보를 확인하세요 비밀번호");
         }
 
         return jwtProvider.generateToken(user);
