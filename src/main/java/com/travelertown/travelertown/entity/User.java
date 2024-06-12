@@ -21,6 +21,8 @@ public class User {
     private String password;
     private String nickname;
     private String email;
+    private int sex;
+    private int age;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
