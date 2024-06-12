@@ -50,6 +50,8 @@ public class User {
                 .username(username)
                 .nickname(nickname)
                 .email(email)
+                .sex(sex)
+                .age(age)
                 .authorities(getAuthorities())
                 .build();
     }
