@@ -16,6 +16,8 @@ public class PrincipalUser implements UserDetails {
     private String username;
     private String nickname;
     private String email;
+    private int sex;
+    private int age;
     private List<SimpleGrantedAuthority> authorities;
 
     @Override

@@ -32,6 +32,8 @@
         <result property="password" column="password" />
         <result property="nickname" column="nickname" />
         <result property="email" column="email" />
+        <result property="sex" column="sex" />
+        <result property="age" column="age" />
         <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
         <collection property="roleRegisters" javaType="list" resultMap="RoleRegisterResultMap" />
@@ -48,7 +50,7 @@
         insert into
             user_tb
         values
-            (0, 2, #{username}, #{password}, #{nickname}, #{email}, now(), now())
+            (0, 2, #{username}, #{password}, #{nickname}, #{email}, 0, 0, now(), now())
     </insert>
 
     <insert id="saveRole">
@@ -81,6 +83,8 @@
             ut.password,
             ut.nickname,
             ut.email,
+            ut.sex,
+            ut.age,
             ut.create_date,
             ut.update_date,
             rrt.role_register_id,
@@ -106,6 +110,8 @@
             ut.password,
             ut.nickname,
             ut.email,
+            ut.sex,
+            ut.age,
             ut.create_date,
             ut.update_date,
             rrt.role_register_id,
@@ -131,6 +137,8 @@
             ut.password,
             ut.nickname,
             ut.email,
+            ut.sex,
+            ut.age,
             ut.create_date,
             ut.update_date,
             rrt.role_register_id,
@@ -157,6 +165,8 @@
             ut.password,
             ut.nickname,
             ut.email,
+            ut.sex,
+            ut.age,
             ut.create_date,
             ut.update_date,
             rrt.role_register_id,
@@ -186,6 +196,24 @@
             user_tb
         set
             password = #{password},
+            update_date = now()
+        where
+            user_id = #{userId}
+    </update>
+    <update id="editSex">
+        update
+            user_tb
+        set
+            sex = #{sex},
+            update_date = now()
+        where
+            user_id = #{userId}
+    </update>
+    <update id="editAge">
+        update
+            user_tb
+        set
+            age = #{age},
             update_date = now()
         where
             user_id = #{userId}
