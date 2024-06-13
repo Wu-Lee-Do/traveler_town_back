@@ -223,5 +223,14 @@
         where
             user_id = #{userId}
     </update>
+    <update id="editImg">
+        update
+            user_tb
+        set
+            profile_img = #{profileImg},
+            update_date = now()
+        where
+            user_id = #{userId}
+    </update>
 
 </mapper>

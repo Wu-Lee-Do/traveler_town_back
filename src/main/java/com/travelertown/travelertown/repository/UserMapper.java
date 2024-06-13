@@ -15,4 +15,5 @@ public interface UserMapper {
     public int saveRole(@Param("userId") int userId, @Param("roleId") int roleId);
     public void editSex(User user);
     public void editAge(User user);
+    public void editImg(User user);
 }
