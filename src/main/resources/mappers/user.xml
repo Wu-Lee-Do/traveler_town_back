@@ -51,7 +51,7 @@
         insert into
             user_tb
         values
-            (0, 2, #{username}, #{password}, #{nickname}, #{email}, 0, 0, "https://firebasestorage.googleapis.com/v0/b/traveler-town.appspot.com/o/user%2Fprofile_img%2F5ee8ed15-5fde-4582-b335-64bbc44dba11_defaultImg.webp?alt=media&amp;token=c00b239c-355f-4370-8c81-81e74197a515", now(), now())
+            (0, #{username}, #{password}, #{nickname}, #{email}, 0, 0, "https://firebasestorage.googleapis.com/v0/b/traveler-town.appspot.com/o/user%2Fprofile_img%2F5ee8ed15-5fde-4582-b335-64bbc44dba11_defaultImg.webp?alt=media&amp;token=c00b239c-355f-4370-8c81-81e74197a515", now(), now())
     </insert>
 
     <insert id="saveRole">
