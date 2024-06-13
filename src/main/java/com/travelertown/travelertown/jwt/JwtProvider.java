@@ -87,9 +87,10 @@ public class JwtProvider {
         return new UsernamePasswordAuthenticationToken(principalUser, principalUser.getPassword(), principalUser.getAuthorities());
     }
 
-    public String generateAuthMailToken(String toMailAddress) {
+    public String generateAuthMailToken(int userId, String toMailAddress) {
         Date exprireDate = new Date(new Date().getTime() + (1000 * 60 * 5));
         return Jwts.builder()
+                .claim("userId", userId)
                 .claim("toMailAddress",toMailAddress)
                 .setExpiration(exprireDate)
                 .signWith(key, SignatureAlgorithm.HS256)
