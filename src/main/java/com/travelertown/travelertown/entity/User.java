@@ -23,6 +23,7 @@ public class User {
     private String email;
     private int sex;
     private int age;
+    private String profileImg;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
@@ -52,6 +53,7 @@ public class User {
                 .email(email)
                 .sex(sex)
                 .age(age)
+                .profileImg(profileImg)
                 .authorities(getAuthorities())
                 .build();
     }
