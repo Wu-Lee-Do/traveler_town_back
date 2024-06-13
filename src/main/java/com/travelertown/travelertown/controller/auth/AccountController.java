@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.controller.auth;
 
 import com.travelertown.travelertown.dto.account.EditAgeReqDto;
+import com.travelertown.travelertown.dto.account.EditImgReqDto;
 import com.travelertown.travelertown.dto.account.EditSexReqDto;
 import com.travelertown.travelertown.security.PrincipalUser;
 import com.travelertown.travelertown.service.AccountService;
@@ -34,6 +35,12 @@ public class AccountController {
     @PutMapping("/age")
     public ResponseEntity<?> editAge(@RequestBody EditAgeReqDto editAgeReqDto) {
         accountService.editAge(editAgeReqDto);
+        return ResponseEntity.ok(true);
+    }
+
+    @PutMapping("/img")
+    public ResponseEntity<?> editImg(@RequestBody EditImgReqDto editImgReqDto) {
+        accountService.editImg(editImgReqDto);
         return ResponseEntity.ok(true);
     }
 }

@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.service;
 
 import com.travelertown.travelertown.dto.account.EditAgeReqDto;
+import com.travelertown.travelertown.dto.account.EditImgReqDto;
 import com.travelertown.travelertown.dto.account.EditSexReqDto;
 import com.travelertown.travelertown.entity.User;
 import com.travelertown.travelertown.repository.UserMapper;
@@ -27,6 +28,13 @@ public class AccountService {
         User user = userMapper.findUserByUsername(authentication.getName());
         user.setAge(editAgeReqDto.getAge());
         userMapper.editAge(user);
+    }
+
+    public void editImg(EditImgReqDto editImgReqDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        user.setProfileImg(editImgReqDto.getProfileImg());
+        userMapper.editImg(user);
     }
 
 }
