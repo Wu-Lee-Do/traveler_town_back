@@ -18,7 +18,8 @@ public class PermitAllFilter extends GenericFilter {
       
         List<String> antMatchers = List.of(
                 "/server",
-                "/auth"
+                "/auth",
+                "/mail/authenticate"
         );
 
         String uri = request.getRequestURI();

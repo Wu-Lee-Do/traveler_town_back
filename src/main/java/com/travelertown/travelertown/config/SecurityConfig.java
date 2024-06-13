@@ -50,7 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/auth/**",
                         "/board/**",
-                        "/account/**"
+                        "/account/**",
+                        "/mail/**"
                 )
                 .permitAll()
                 .antMatchers()
