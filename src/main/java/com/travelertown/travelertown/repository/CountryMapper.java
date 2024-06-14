@@ -8,5 +8,5 @@ import java.util.List;
 @Mapper
 public interface CountryMapper {
     public List<Country> getCountryAll();
-    public Country getCountry(String countryNameKor);
+    public Country getCountry(String search);
 }

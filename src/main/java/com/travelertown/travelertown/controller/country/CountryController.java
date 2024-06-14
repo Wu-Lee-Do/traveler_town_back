@@ -21,7 +21,7 @@ public class CountryController {
     }
 
     @GetMapping("/single")
-    public ResponseEntity<?> getCountry(@RequestParam String countryNameKor) {
-        return ResponseEntity.ok().body(countryService.getCountry(countryNameKor));
+    public ResponseEntity<?> getCountry(@RequestParam String search) {
+        return ResponseEntity.ok().body(countryService.getCountry(search));
     }
 }
