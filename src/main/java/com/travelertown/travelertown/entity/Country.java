@@ -13,7 +13,7 @@ public class Country {
     private String countryNameKor;
     private String countryNameEng;
     private String countryCode;
-    private String captital;
+    private String capital;
     private int population;
     private String populationExp;
     private int area;

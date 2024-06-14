@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.travelertown.travelertown.repository.CountryMapper">
+    <resultMap id="CountryResultMap" type="com.travelertown.travelertown.entity.Country">
+        <result property="countryNameKor" column="country_name_kor" />
+        <result property="countryNameEng" column="country_name_eng" />
+        <result property="countryCode" column="country_code" />
+        <result property="capital" column="capital" />
+        <result property="population" column="population" />
+        <result property="populationExp" column="population_exp" />
+        <result property="area" column="area" />
+        <result property="areaExp" column="area_exp" />
+        <result property="language" column="language" />
+        <result property="religion" column="religion" />
+        <result property="people" column="people" />
+        <result property="climate" column="climate" />
+        <result property="founding" column="founding" />
+    </resultMap>
+    <select id="getCountryAll" resultType="com.travelertown.travelertown.entity.Country">
+        select *
+        from
+            country_tb
+    </select>
+
+
+</mapper>
