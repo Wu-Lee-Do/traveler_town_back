@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,5 +18,10 @@ public class CountryController {
     @GetMapping("/all")
     public ResponseEntity<?> getCountryAll() {
         return ResponseEntity.ok().body(countryService.getCountryAll());
+    }
+
+    @GetMapping("/single")
+    public ResponseEntity<?> getCountry(@RequestParam String countryNameKor) {
+        return ResponseEntity.ok().body(countryService.getCountry(countryNameKor));
     }
 }

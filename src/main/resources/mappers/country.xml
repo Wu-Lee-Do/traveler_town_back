@@ -24,6 +24,13 @@
         from
             country_tb
     </select>
+    <select id="getCountry" resultMap="CountryResultMap">
+        select *
+        from
+            country_tb
+        where
+            country_name_kor = #{countryNameKor}
+    </select>
 
 
 </mapper>

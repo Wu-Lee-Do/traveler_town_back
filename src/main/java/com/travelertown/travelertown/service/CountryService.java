@@ -16,4 +16,8 @@ public class CountryService {
     public List<Country> getCountryAll() {
         return countryMapper.getCountryAll();
     }
+
+    public Country getCountry(String countryNameKor) {
+        return countryMapper.getCountry(countryNameKor);
+    }
 }
