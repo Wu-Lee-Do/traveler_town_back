@@ -19,7 +19,7 @@
         <result property="climate" column="climate" />
         <result property="founding" column="founding" />
     </resultMap>
-    <select id="getCountryAll" resultType="com.travelertown.travelertown.entity.Country">
+    <select id="getCountryAll" resultMap="CountryResultMap">
         select *
         from
             country_tb
