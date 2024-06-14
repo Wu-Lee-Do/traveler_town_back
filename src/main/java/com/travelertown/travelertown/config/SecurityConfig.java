@@ -51,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/auth/**",
                         "/board/**",
                         "/account/**",
-                        "/mail/**"
+                        "/mail/**",
+                        "/country/**"
                 )
                 .permitAll()
                 .antMatchers()
