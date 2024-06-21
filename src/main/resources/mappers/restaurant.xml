@@ -65,6 +65,7 @@
             ut.profile_img,
             bt.board_id,
             ct.country_code,
+            ct.country_name_kor,
             bt.board_category_id,
             bt.board_title,
             bt.board_content,

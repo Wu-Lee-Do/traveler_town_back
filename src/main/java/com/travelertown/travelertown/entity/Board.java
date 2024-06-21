@@ -35,6 +35,7 @@ public class Board {
                 .boardId(boardId)
                 .boardCategoryId(boardCategoryId)
                 .countryCode(country.getCountryCode())
+                .countryNameKor(country.getCountryNameKor())
                 .boardTitle(boardTitle.replaceAll(" ", "-"))
                 .boardContent(boardContent)
                 .createDate(createDate)
