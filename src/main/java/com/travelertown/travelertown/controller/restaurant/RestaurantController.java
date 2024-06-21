@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.controller.restaurant;
 
 import com.travelertown.travelertown.dto.restaurant.NewRestaurantBoardReqDto;
+import com.travelertown.travelertown.dto.restaurant.UpdateRestaurantBoardReqDto;
 import com.travelertown.travelertown.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,10 @@ public class RestaurantController {
     @DeleteMapping("/board/{boardId}")
     public ResponseEntity<?> removeRetaurantBoard(@PathVariable int boardId) {
         return ResponseEntity.ok(restaurantService.removeRetaurantBoard(boardId));
+    }
+
+    @PutMapping("/board/{boardId}")
+    public ResponseEntity<?> updateRestaurantBoard(@PathVariable int boardId, @RequestBody UpdateRestaurantBoardReqDto updateRestaurantBoardReqDto) {
+        return ResponseEntity.ok(restaurantService.updateRestaurantBoard(updateRestaurantBoardReqDto));
     }
 }

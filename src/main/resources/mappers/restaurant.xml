@@ -109,4 +109,18 @@
         where
             board_id = #{boardId}
     </delete>
+
+    <update id="updateRestaurantBoard"
+            parameterType="com.travelertown.travelertown.entity.Board">
+        update
+            board_tb
+        set
+            board_category_id = #{boardCategoryId},
+            country_code = #{countryCode},
+            board_title = #{boardTitle},
+            board_content = #{boardContent},
+            update_date = now()
+        where
+            board_id = #{boardId}
+    </update>
 </mapper>
