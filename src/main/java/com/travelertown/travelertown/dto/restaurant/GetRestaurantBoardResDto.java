@@ -20,6 +20,7 @@ public class GetRestaurantBoardResDto {
     int boardId;
     int boardCategoryId;
     String countryCode;
+    String countryNameKor;
     String boardTitle;
     String boardContent;
     LocalDateTime createDate;
