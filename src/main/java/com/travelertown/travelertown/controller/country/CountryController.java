@@ -30,8 +30,8 @@ public class CountryController {
         return ResponseEntity.ok().body(countryService.addCountryBookmark(addCountryBookmarkReqDto));
     }
 
-    @PostMapping("/getBookmark")
+    @GetMapping("/getbookmark")
     public ResponseEntity<?> getCountryBookmarkByUserId() {
-        return ResponseEntity.ok().body(null);
+        return ResponseEntity.ok().body(countryService.getCountryBookmarkByUserId());
     }
 }

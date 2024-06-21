@@ -37,6 +37,15 @@
         OR country_name_eng = #{search}
         OR capital LIKE CONCAT('%', #{search}, '%')
     </select>
+    <select id="getCountryBookmarkByUserId" resultMap="CountryBookmarkResultMap">
+        select
+            *
+        from
+            country_bookmark_tb
+        where
+            user_id = #{userId}
+
+    </select>
     <insert id="addCountryBookmark">
         insert into
             country_bookmark_tb

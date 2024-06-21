@@ -37,4 +37,10 @@ public class CountryService {
         countryBookmark.setUserId(user.getUserId());
         return countryMapper.addCountryBookmark(countryBookmark);
     }
+
+    public List<CountryBookmark> getCountryBookmarkByUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        return countryMapper.getCountryBookmarkByUserId(user.getUserId());
+    }
 }
