@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class Board {
     private int boardId;
     private int boardCategoryId;
+    private String countryCode;
     private String boardTitle;
     private String boardContent;
     private int userId;
