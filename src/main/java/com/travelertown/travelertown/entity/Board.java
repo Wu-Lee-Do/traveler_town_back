@@ -51,6 +51,7 @@ public class Board {
                 .boardId(boardId)
                 .boardCategoryId(boardCategoryId)
                 .countryCode(country.getCountryCode())
+                .countryNameKor(country.getCountryNameKor())
                 .boardTitle(boardTitle)
                 .boardContent(boardContent)
                 .createDate(createDate)
