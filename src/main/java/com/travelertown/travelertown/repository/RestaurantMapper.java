@@ -13,4 +13,6 @@ public interface RestaurantMapper {
     public Board getRestaurantBoard(int boardId);
 
     public List<Board> getRestaurantBoards();
+
+    public int deleteRetaurantBoard(int boardId);
 }

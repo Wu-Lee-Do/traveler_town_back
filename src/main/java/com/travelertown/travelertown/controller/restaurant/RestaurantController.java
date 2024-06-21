@@ -27,4 +27,9 @@ public class RestaurantController {
     public ResponseEntity<?> getRestaurantBoards() {
         return ResponseEntity.ok(restaurantService.getRestaurantBoards());
     }
+
+    @DeleteMapping("/board/{boardId}")
+    public ResponseEntity<?> deleteRetaurantBoard(@PathVariable int boardId) {
+        return ResponseEntity.ok(restaurantService.deleteRetaurantBoard(boardId));
+    }
 }

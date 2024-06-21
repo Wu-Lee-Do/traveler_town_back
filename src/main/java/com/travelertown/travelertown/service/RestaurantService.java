@@ -28,4 +28,8 @@ public class RestaurantService {
         return restaurantMapper.getRestaurantBoards().stream().map(Board::toGetRestaurantBoardsResDto).collect(Collectors.toList());
     }
 
+    public int deleteRetaurantBoard(int boardId) {
+        return restaurantMapper.deleteRetaurantBoard(boardId);
+    }
+
 }

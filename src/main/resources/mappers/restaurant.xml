@@ -100,4 +100,13 @@
         where
             bt.board_category_id = 1
     </select>
+
+    <delete id="deleteRetaurantBoard"
+            parameterType="Integer">
+        delete
+        from
+            board_tb
+        where
+            board_id = #{boardId}
+    </delete>
 </mapper>
