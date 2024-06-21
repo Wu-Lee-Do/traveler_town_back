@@ -101,7 +101,7 @@
             bt.board_category_id = 1
     </select>
 
-    <delete id="deleteRetaurantBoard"
+    <delete id="removeRetaurantBoard"
             parameterType="Integer">
         delete
         from

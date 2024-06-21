@@ -29,7 +29,7 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/board/{boardId}")
-    public ResponseEntity<?> deleteRetaurantBoard(@PathVariable int boardId) {
-        return ResponseEntity.ok(restaurantService.deleteRetaurantBoard(boardId));
+    public ResponseEntity<?> removeRetaurantBoard(@PathVariable int boardId) {
+        return ResponseEntity.ok(restaurantService.removeRetaurantBoard(boardId));
     }
 }
