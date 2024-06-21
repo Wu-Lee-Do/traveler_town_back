@@ -51,6 +51,13 @@
             country_bookmark_tb
         values(0, #{userId}, #{countryCode}, now())
     </insert>
+    <delete id="removeCountryBookmarkByBookmarkId" >
+        delete
+        from
+            country_bookmark_tb
+        where
+            country_bookmark_id = #{countryBookmarkId}
+    </delete>
 
 
 

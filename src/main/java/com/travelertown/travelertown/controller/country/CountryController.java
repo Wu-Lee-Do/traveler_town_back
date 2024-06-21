@@ -34,4 +34,9 @@ public class CountryController {
     public ResponseEntity<?> getCountryBookmarkByUserId() {
         return ResponseEntity.ok().body(countryService.getCountryBookmarkByUserId());
     }
+
+    @DeleteMapping("/removebookmark")
+    public ResponseEntity<?> removeCountryBookmarkByBookmarkId(@RequestParam int countryBookmarkId) {
+        return ResponseEntity.ok().body(countryService.removeCountryBookmarkByBookmarkId(countryBookmarkId));
+    }
 }

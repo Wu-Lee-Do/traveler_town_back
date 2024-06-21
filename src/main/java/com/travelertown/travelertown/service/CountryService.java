@@ -43,4 +43,8 @@ public class CountryService {
         User user = userMapper.findUserByUsername(authentication.getName());
         return countryMapper.getCountryBookmarkByUserId(user.getUserId());
     }
+
+    public int removeCountryBookmarkByBookmarkId(int countryBookmarkId) {
+        return countryMapper.removeCountryBookmarkByBookmarkId(countryBookmarkId);
+    }
 }

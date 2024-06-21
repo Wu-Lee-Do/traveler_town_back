@@ -12,4 +12,5 @@ public interface CountryMapper {
     public Country getCountry(String search);
     public int addCountryBookmark(CountryBookmark countryBookmark);
     public List<CountryBookmark> getCountryBookmarkByUserId(int userId);
+    public int removeCountryBookmarkByBookmarkId(int countryBookmarkId);
 }
