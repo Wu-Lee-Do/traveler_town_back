@@ -19,6 +19,12 @@
         <result property="climate" column="climate" />
         <result property="founding" column="founding" />
     </resultMap>
+    <resultMap id="CountryBookmarkResultMap" type="com.travelertown.travelertown.entity.CountryBookmark">
+        <id property="countryBookmarkId" column="country_bookmark_id" />
+        <result property="userId" column="user_id" />
+        <result property="countryCode" column="country_code" />
+        <result property="createDate" column="create_date" />
+    </resultMap>
     <select id="getCountryAll" resultMap="CountryResultMap">
         select *
         from
@@ -31,6 +37,12 @@
         OR country_name_eng = #{search}
         OR capital LIKE CONCAT('%', #{search}, '%')
     </select>
+    <insert id="addCountryBookmark">
+        insert into
+            country_bookmark_tb
+        values(0, #{userId}, #{countryCode}, now())
+    </insert>
+
 
 
 </mapper>
