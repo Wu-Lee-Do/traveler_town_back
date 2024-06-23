@@ -1,6 +1,5 @@
 package com.travelertown.travelertown.controller.restaurant;
 
-import com.travelertown.travelertown.dto.restaurant.GetRestaurantBoardByTitleReqDto;
 import com.travelertown.travelertown.dto.restaurant.NewRestaurantBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.UpdateRestaurantBoardReqDto;
 import com.travelertown.travelertown.service.RestaurantService;
@@ -41,7 +40,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/board")
-    public ResponseEntity<?> getRestaurantBoardByTitle(@RequestBody GetRestaurantBoardByTitleReqDto getRestaurantBoardByTitleReqDto) {
-        return ResponseEntity.ok(restaurantService.getRestaurantBoardByTitle(getRestaurantBoardByTitleReqDto));
+    public ResponseEntity<?> getRestaurantBoardByTitle(@RequestParam String boardTitle) {
+        return ResponseEntity.ok(restaurantService.getRestaurantBoardByTitle(boardTitle));
     }
 }

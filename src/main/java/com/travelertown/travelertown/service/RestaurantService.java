@@ -36,8 +36,7 @@ public class RestaurantService {
         return restaurantMapper.updateRestaurantBoard(updateRestaurantBoardReqDto.toEntity());
     }
 
-    public List<GetRestaurantBoardByTitleResDto> getRestaurantBoardByTitle(GetRestaurantBoardByTitleReqDto getRestaurantBoardByTitleReqDto) {
-        return restaurantMapper.getRestaurantBoardByTitle(getRestaurantBoardByTitleReqDto.getBoardTitle()).stream().map(Board::toGetRestaurantBoardByTitleResDto).collect(Collectors.toList());
+    public List<GetRestaurantBoardByTitleResDto> getRestaurantBoardByTitle(String boardTitle) {
+        return restaurantMapper.getRestaurantBoardByTitle(boardTitle).stream().map(Board::toGetRestaurantBoardByTitleResDto).collect(Collectors.toList());
     }
-
 }
