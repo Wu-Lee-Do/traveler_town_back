@@ -38,4 +38,9 @@ public class RestaurantController {
     public ResponseEntity<?> updateRestaurantBoard(@PathVariable int boardId, @RequestBody UpdateRestaurantBoardReqDto updateRestaurantBoardReqDto) {
         return ResponseEntity.ok(restaurantService.updateRestaurantBoard(updateRestaurantBoardReqDto));
     }
+
+    @GetMapping("/board")
+    public ResponseEntity<?> getRestaurantBoardByTitle(@RequestParam String boardTitle) {
+        return ResponseEntity.ok(restaurantService.getRestaurantBoardByTitle(boardTitle));
+    }
 }
