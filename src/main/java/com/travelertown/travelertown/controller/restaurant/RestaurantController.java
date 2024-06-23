@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.controller.restaurant;
 
+import com.travelertown.travelertown.dto.restaurant.GetRestaurantBoardByTitleReqDto;
 import com.travelertown.travelertown.dto.restaurant.NewRestaurantBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.UpdateRestaurantBoardReqDto;
 import com.travelertown.travelertown.service.RestaurantService;
@@ -37,5 +38,10 @@ public class RestaurantController {
     @PutMapping("/board/{boardId}")
     public ResponseEntity<?> updateRestaurantBoard(@PathVariable int boardId, @RequestBody UpdateRestaurantBoardReqDto updateRestaurantBoardReqDto) {
         return ResponseEntity.ok(restaurantService.updateRestaurantBoard(updateRestaurantBoardReqDto));
+    }
+
+    @GetMapping("/board")
+    public ResponseEntity<?> getRestaurantBoardByTitle(@RequestBody GetRestaurantBoardByTitleReqDto getRestaurantBoardByTitleReqDto) {
+        return ResponseEntity.ok(restaurantService.getRestaurantBoardByTitle(getRestaurantBoardByTitleReqDto));
     }
 }

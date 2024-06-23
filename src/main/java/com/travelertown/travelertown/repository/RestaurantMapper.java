@@ -17,4 +17,6 @@ public interface RestaurantMapper {
     public int removeRetaurantBoard(int boardId);
 
     public int updateRestaurantBoard(Board board);
+
+    public List<Board> getRestaurantBoardByTitle(String boardTitle);
 }

@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.entity;
 
+import com.travelertown.travelertown.dto.restaurant.GetRestaurantBoardByTitleResDto;
 import com.travelertown.travelertown.dto.restaurant.GetRestaurantBoardResDto;
 import com.travelertown.travelertown.dto.restaurant.GetRestaurantBoardsResDto;
 import lombok.AllArgsConstructor;
@@ -45,6 +46,23 @@ public class Board {
 
     public GetRestaurantBoardsResDto toGetRestaurantBoardsResDto() {
         return GetRestaurantBoardsResDto.builder()
+                .userId(user.getUserId())
+                .nickname(user.getNickname())
+                .email(user.getEmail())
+                .profileImg(user.getProfileImg())
+                .boardId(boardId)
+                .boardCategoryId(boardCategoryId)
+                .countryCode(country.getCountryCode())
+                .countryNameKor(country.getCountryNameKor())
+                .boardTitle(boardTitle)
+                .boardContent(boardContent)
+                .createDate(createDate)
+                .updateDate(updateDate)
+                .build();
+    }
+
+    public GetRestaurantBoardByTitleResDto toGetRestaurantBoardByTitleResDto() {
+        return GetRestaurantBoardByTitleResDto.builder()
                 .userId(user.getUserId())
                 .nickname(user.getNickname())
                 .email(user.getEmail())
