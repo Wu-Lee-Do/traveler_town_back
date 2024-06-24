@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.service;
 
 import com.travelertown.travelertown.dto.country.AddCountryBookmarkReqDto;
+import com.travelertown.travelertown.dto.country.GetCountryNameKorAndCountryCodeAllResDto;
 import com.travelertown.travelertown.entity.Country;
 import com.travelertown.travelertown.entity.CountryBookmark;
 import com.travelertown.travelertown.entity.User;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CountryService {
@@ -46,5 +48,9 @@ public class CountryService {
 
     public int removeCountryBookmarkByBookmarkId(int countryBookmarkId) {
         return countryMapper.removeCountryBookmarkByBookmarkId(countryBookmarkId);
+    }
+
+    public List<GetCountryNameKorAndCountryCodeAllResDto> getCountryNameKorAndCountryCodeAll() {
+        return countryMapper.getCountryNameKorAndCountryCodeAll().stream().map(Country::toGetCountryNameKorAndCountryCodeAllResDto).collect(Collectors.toList());
     }
 }
