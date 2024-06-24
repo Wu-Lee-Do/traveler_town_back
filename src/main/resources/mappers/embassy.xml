@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.travelertown.travelertown.repository.EmbassyMapper">
+    <resultMap id="EmbassyResultMap" type="com.travelertown.travelertown.entity.Embassy" >
+        <id property="embassyId" column="embassy_id" />
+        <result property="countryNameKor" column="country_name_kor" />
+        <result property="countryCode" column="country_code" />
+        <result property="concurrentPosition" column="concurrent_position" />
+        <result property="type" column="type" />
+        <result property="embassyName" column="embassy_name" />
+        <result property="latitude" column="latitude" />
+        <result property="longitude" column="longitude" />
+        <result property="phoneNumber" column="phone_number" />
+        <result property="callCenterNumber" column="call_center_number" />
+        <result property="freePhoneNumber" column="free_phone_number" />
+        <result property="emergencyNumber" column="emergency_number" />
+        <result property="address" column="address" />
+    </resultMap>
+
+    <select id="getEmbassyByCountryCode" resultMap="EmbassyResultMap">
+        select
+            *
+        from
+            embassy_tb
+        where
+            country_code = #{countryCode}
+    </select>
+</mapper>
