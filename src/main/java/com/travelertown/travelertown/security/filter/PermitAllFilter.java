@@ -24,6 +24,7 @@ public class PermitAllFilter extends GenericFilter {
                 "/country/single",
                 "/restaurant",
                 "/country/getcountry"
+                "/embassy/single"
         );
 
         String uri = request.getRequestURI();
