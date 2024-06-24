@@ -23,7 +23,7 @@ public class PermitAllFilter extends GenericFilter {
                 "/country/all",
                 "/country/single",
                 "/restaurant",
-                "/country/getcountry"
+                "/country/getcountry",
                 "/embassy/single"
         );
 
