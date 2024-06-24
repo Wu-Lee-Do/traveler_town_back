@@ -58,7 +58,15 @@
         where
             country_bookmark_id = #{countryBookmarkId}
     </delete>
-
+    <select id="getCountryNameKorAndCountryCodeAll" resultMap="CountryResultMap">
+        select
+            country_code,
+            country_name_kor
+        from
+            country_tb
+        order by
+            country_name_kor
+    </select>
 
 
 </mapper>

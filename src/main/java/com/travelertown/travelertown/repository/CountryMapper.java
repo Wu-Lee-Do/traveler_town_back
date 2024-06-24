@@ -13,4 +13,6 @@ public interface CountryMapper {
     public int addCountryBookmark(CountryBookmark countryBookmark);
     public List<CountryBookmark> getCountryBookmarkByUserId(int userId);
     public int removeCountryBookmarkByBookmarkId(int countryBookmarkId);
+
+    public List<Country> getCountryNameKorAndCountryCodeAll();
 }

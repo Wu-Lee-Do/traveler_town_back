@@ -22,7 +22,8 @@ public class PermitAllFilter extends GenericFilter {
                 "/mail/authenticate",
                 "/country/all",
                 "/country/single",
-                "/restaurant"
+                "/restaurant",
+                "/country/getcountry"
         );
 
         String uri = request.getRequestURI();
