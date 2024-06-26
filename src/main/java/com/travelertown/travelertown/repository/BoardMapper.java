@@ -8,6 +8,8 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     public int newBoard(Board board);
-    public List<Board> getBoard(int boardCategoryId);
-    public int deleteBoard(int boardId);
+    public Board getBoard(int boardId);
+
+    public List<Board> getBoards(int boardCategoryId);
+    public int removeBoard(int boardId);
 }

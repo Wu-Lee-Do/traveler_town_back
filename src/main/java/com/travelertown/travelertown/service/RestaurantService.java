@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.service;
 
+import com.travelertown.travelertown.dto.board.GetBoardsResDto;
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.*;
 import com.travelertown.travelertown.entity.Board;
@@ -19,13 +20,13 @@ public class RestaurantService {
         return restaurantMapper.restaurantMapper(newBoardReqDto.toEntity());
     }
 
-    public GetRestaurantBoardResDto getRestaurantBoard(int boardId) {
-        return restaurantMapper.getRestaurantBoard(boardId).toGetRestaurantBoardResDto();
-    }
+//    public GetBoardResDto getRestaurantBoard(int boardId) {
+//        return restaurantMapper.getRestaurantBoard(boardId).toGetRestaurantBoardResDto();
+//    }
 
-    public List<GetRestaurantBoardsResDto> getRestaurantBoards() {
-        return restaurantMapper.getRestaurantBoards().stream().map(Board::toGetRestaurantBoardsResDto).collect(Collectors.toList());
-    }
+//    public List<GetBoardsResDto> getRestaurantBoards() {
+//        return restaurantMapper.getRestaurantBoards().stream().map(Board::toGetRestaurantBoardsResDto).collect(Collectors.toList());
+//    }
 
     public int removeRetaurantBoard(int boardId) {
         return restaurantMapper.removeRetaurantBoard(boardId);

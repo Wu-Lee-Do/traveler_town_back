@@ -19,9 +19,14 @@ public class BoardController {
         return ResponseEntity.ok(boardService.newBoard(newBoardReqDto));
     }
 
+    @GetMapping("/{boardId}")
+    public ResponseEntity<?> getBoard(@PathVariable int boardId) {
+        return ResponseEntity.ok(boardService.getBoard(boardId));
+    }
+
     @GetMapping("/all")
-    public ResponseEntity<?> getBoard(@RequestParam int boardCategoryId) {
-        return ResponseEntity.ok().body(boardService.getBoard(boardCategoryId));
+    public ResponseEntity<?> getBoards(@RequestParam int boardCategoryId) {
+        return ResponseEntity.ok().body(boardService.getBoards(boardCategoryId));
     }
 
     @DeleteMapping("/remove")

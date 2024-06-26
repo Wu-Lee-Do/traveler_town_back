@@ -18,16 +18,16 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurantService.newRestaurantBoard(newBoardReqDto));
     }
 
-    @GetMapping("/board/{boardId}")
-    public ResponseEntity<?> getRestaurantBoard(@PathVariable int boardId) {
-        return ResponseEntity.ok(restaurantService.getRestaurantBoard(boardId));
-    }
+//    @GetMapping("/board/{boardId}")
+//    public ResponseEntity<?> getRestaurantBoard(@PathVariable int boardId) {
+//        return ResponseEntity.ok(restaurantService.getRestaurantBoard(boardId));
+//    }
 
     // 스크롤 위치에 따른 데이터 다건 조회 기능 수정 필요
-    @GetMapping("/boards")
-    public ResponseEntity<?> getRestaurantBoards() {
-        return ResponseEntity.ok(restaurantService.getRestaurantBoards());
-    }
+//    @GetMapping("/boards")
+//    public ResponseEntity<?> getRestaurantBoards() {
+//        return ResponseEntity.ok(restaurantService.getRestaurantBoards());
+//    }
 
     @DeleteMapping("/board/{boardId}")
     public ResponseEntity<?> removeRetaurantBoard(@PathVariable int boardId) {

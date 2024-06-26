@@ -12,10 +12,10 @@
         <result property="userId" column="user_id"/>
         <result property="createDate" column="create_date"/>
         <result property="updateDate" column="update_date"/>
-        <association property="user" resultMap="userResultMap"/>
-        <association property="country" resultMap="countryResultMap"/>
+        <association property="user" resultMap="UserResultMap"/>
+        <association property="country" resultMap="CountryResultMap"/>
     </resultMap>
-    <resultMap id="userResultMap" type="com.travelertown.travelertown.entity.User">
+    <resultMap id="UserResultMap" type="com.travelertown.travelertown.entity.User">
         <id property="userId" column="user_id" />
         <result property="username" column="username" />
         <result property="password" column="password" />
@@ -27,7 +27,7 @@
         <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
     </resultMap>
-    <resultMap id="countryResultMap" type="com.travelertown.travelertown.entity.Country">
+    <resultMap id="CountryResultMap" type="com.travelertown.travelertown.entity.Country">
         <result property="countryNameKor" column="country_name_kor" />
         <result property="countryNameEng" column="country_name_eng" />
         <result property="countryCode" column="country_code" />
@@ -50,15 +50,56 @@
         insert into board_tb
         values(0, #{boardCategoryId}, #{countryCode}, #{boardTitle}, #{boardContent}, #{userId}, now(), now())
     </insert>
-    <select id="getBoard" resultMap="BoardResultMap">
+    <select id="getBoard"
+            parameterType="Integer"
+            resultMap="BoardResultMap"
+    >
         select
-            *
+            ut.user_id,
+            ut.nickname,
+            ut.email,
+            ut.profile_img,
+            bt.board_id,
+            ct.country_code,
+            ct.country_name_kor,
+            bt.board_category_id,
+            bt.board_title,
+            bt.board_content,
+            bt.create_date,
+            bt.update_date
         from
-            board_tb
+            board_tb bt
+            left outer join user_tb ut on(ut.user_id = bt.user_id)
+            left outer join country_tb ct on(ct.country_code = bt.country_code)
         where
-            board_category_id = #{boardCategoryId}
+            bt.board_id = #{boardId}
     </select>
-    <delete id="deleteBoard" parameterType="int">
+    <select id="getBoards"
+            parameterType="Integer"
+            resultMap="BoardResultMap"
+    >
+        select
+            ut.user_id,
+            ut.nickname,
+            ut.email,
+            ut.profile_img,
+            bt.board_id,
+            ct.country_code,
+            ct.country_name_kor,
+            bt.board_category_id,
+            bt.board_title,
+            bt.board_content,
+            bt.create_date,
+            bt.update_date
+        from
+            board_tb bt
+            left outer join user_tb ut on(ut.user_id = bt.user_id)
+            left outer join country_tb ct on(ct.country_code = bt.country_code)
+        where
+            bt.board_category_id = #{boardCategoryId}
+    </select>
+    <delete id="removeBoard"
+            parameterType="Integer">
         delete
         from
             board_tb

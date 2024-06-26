@@ -1,4 +1,4 @@
-package com.travelertown.travelertown.dto.restaurant;
+package com.travelertown.travelertown.dto.board;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetRestaurantBoardsResDto {
+public class GetBoardsResDto {
     int userId;
     String nickname;
     String email;
