@@ -1,13 +1,11 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.board.GetBoardResDto;
-import com.travelertown.travelertown.dto.board.GetBoardsResDto;
-import com.travelertown.travelertown.dto.board.NewBoardReqDto;
-import com.travelertown.travelertown.dto.board.NewBoardReqDtoEx;
+import com.travelertown.travelertown.dto.board.*;
 import com.travelertown.travelertown.entity.Board;
 import com.travelertown.travelertown.repository.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,5 +30,10 @@ public class BoardService {
 
     public int removeBoard(int boardId){
         return boardMapper.removeBoard(boardId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public int updateBoard(UpdateBoardReqDto updateBoardReqDto) {
+        return boardMapper.updateBoard(updateBoardReqDto.toEntity());
     }
 }

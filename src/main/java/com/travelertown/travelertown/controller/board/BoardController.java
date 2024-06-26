@@ -2,6 +2,7 @@ package com.travelertown.travelertown.controller.board;
 
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
 import com.travelertown.travelertown.dto.board.NewBoardReqDtoEx;
+import com.travelertown.travelertown.dto.board.UpdateBoardReqDto;
 import com.travelertown.travelertown.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,5 +33,10 @@ public class BoardController {
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeBoard(@RequestParam int boardId) {
         return ResponseEntity.ok().body(boardService.removeBoard(boardId));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> updateBoard(@RequestBody UpdateBoardReqDto updateBoardReqDto) {
+        return ResponseEntity.ok(boardService.updateBoard(updateBoardReqDto));
     }
 }

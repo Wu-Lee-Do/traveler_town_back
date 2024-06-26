@@ -1,7 +1,7 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.board.GetBoardsResDto;
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
+import com.travelertown.travelertown.dto.board.UpdateBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.*;
 import com.travelertown.travelertown.entity.Board;
 import com.travelertown.travelertown.repository.RestaurantMapper;
@@ -33,8 +33,8 @@ public class RestaurantService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public int updateRestaurantBoard(UpdateRestaurantBoardReqDto updateRestaurantBoardReqDto) {
-        return restaurantMapper.updateRestaurantBoard(updateRestaurantBoardReqDto.toEntity());
+    public int updateRestaurantBoard(UpdateBoardReqDto updateBoardReqDto) {
+        return restaurantMapper.updateRestaurantBoard(updateBoardReqDto.toEntity());
     }
 
     public List<GetRestaurantBoardByTitleResDto> getRestaurantBoardByTitle(String boardTitle) {

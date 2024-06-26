@@ -12,4 +12,6 @@ public interface BoardMapper {
 
     public List<Board> getBoards(int boardCategoryId);
     public int removeBoard(int boardId);
+
+    public int updateBoard(Board board);
 }
