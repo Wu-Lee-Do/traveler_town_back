@@ -119,4 +119,29 @@
         where
             board_id = #{boardId}
     </update>
+    <select id="getBoardsByTitleOrCountryNameKor"
+            parameterType="HashMap"
+            resultMap="BoardResultMap">
+        select
+            ut.user_id,
+            ut.nickname,
+            ut.email,
+            ut.profile_img,
+            bt.board_id,
+            ct.country_code,
+            ct.country_name_kor,
+            bt.board_category_id,
+            bt.board_title,
+            bt.board_content,
+            bt.create_date,
+            bt.update_date
+        from
+            board_tb bt
+            left outer join user_tb ut on(ut.user_id = bt.user_id)
+            left outer join country_tb ct on(ct.country_code = bt.country_code)
+        where
+            bt.board_category_id = #{boardCategoryId} and
+            bt.board_title like concat('%', #{searchText} ,'%') or
+            ct.country_name_kor like concat('%', #{searchText} ,'%')
+    </select>
 </mapper>

@@ -39,4 +39,9 @@ public class BoardController {
     public ResponseEntity<?> updateBoard(@RequestBody UpdateBoardReqDto updateBoardReqDto) {
         return ResponseEntity.ok(boardService.updateBoard(updateBoardReqDto));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> getBoardsByTitleOrCountryNameKor(@RequestParam int boardCategoryId, @RequestParam String searchText) {
+        return ResponseEntity.ok(boardService.getBoardsByTitleOrCountryNameKor(boardCategoryId, searchText));
+    }
 }

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,5 +37,12 @@ public class BoardService {
     @Transactional(rollbackFor = Exception.class)
     public int updateBoard(UpdateBoardReqDto updateBoardReqDto) {
         return boardMapper.updateBoard(updateBoardReqDto.toEntity());
+    }
+
+    public List<GetBoardsByTitleOrCountryNameResDto> getBoardsByTitleOrCountryNameKor(int boardCategoryId, String searchText) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("boardCategoryId", boardCategoryId);
+        hashMap.put("searchText", searchText);
+        return boardMapper.getBoardsByTitleOrCountryNameKor(hashMap).stream().map(Board::toGetBoardsByTitleOrCountryNameResDto).collect(Collectors.toList());
     }
 }
