@@ -12,10 +12,43 @@
         <result property="userId" column="user_id"/>
         <result property="createDate" column="create_date"/>
         <result property="updateDate" column="update_date"/>
+        <association property="user" resultMap="userResultMap"/>
+        <association property="country" resultMap="countryResultMap"/>
     </resultMap>
-    <insert id="saveBoard" parameterType="com.travelertown.travelertown.entity.Board">
+    <resultMap id="userResultMap" type="com.travelertown.travelertown.entity.User">
+        <id property="userId" column="user_id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="nickname" column="nickname" />
+        <result property="email" column="email" />
+        <result property="sex" column="sex" />
+        <result property="age" column="age" />
+        <result property="profileImg" column="profile_img" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+    <resultMap id="countryResultMap" type="com.travelertown.travelertown.entity.Country">
+        <result property="countryNameKor" column="country_name_kor" />
+        <result property="countryNameEng" column="country_name_eng" />
+        <result property="countryCode" column="country_code" />
+        <result property="capital" column="capital" />
+        <result property="population" column="population" />
+        <result property="populationExp" column="population_exp" />
+        <result property="area" column="area" />
+        <result property="areaExp" column="area_exp" />
+        <result property="language" column="language" />
+        <result property="religion" column="religion" />
+        <result property="people" column="people" />
+        <result property="climate" column="climate" />
+        <result property="founding" column="founding" />
+    </resultMap>
+    <insert id="newBoard"
+            parameterType="com.travelertown.travelertown.entity.Board"
+            useGeneratedKeys="true"
+            keyProperty="boardId"
+    >
         insert into board_tb
-        values(0, #{boardCategoryId}, #{boardTitle}, #{boardContent}, #{userId}, now(), now())
+        values(0, #{boardCategoryId}, #{countryCode}, #{boardTitle}, #{boardContent}, #{userId}, now(), now())
     </insert>
     <select id="getBoard" resultMap="BoardResultMap">
         select

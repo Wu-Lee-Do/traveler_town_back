@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.service;
 
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
+import com.travelertown.travelertown.dto.board.NewBoardReqDtoEx;
 import com.travelertown.travelertown.entity.Board;
 import com.travelertown.travelertown.repository.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,8 @@ public class BoardService {
     @Autowired
     private BoardMapper boardMapper;
 
-    public int saveBoard(NewBoardReqDto newBoardReqDto){
-        Board board = newBoardReqDto.toEntity();
-        return boardMapper.saveBoard(board);
+    public int newBoard(NewBoardReqDto newBoardReqDto){
+        return boardMapper.newBoard(newBoardReqDto.toEntity());
     }
 
     public List<Board> getBoard(int boardCategoryId){

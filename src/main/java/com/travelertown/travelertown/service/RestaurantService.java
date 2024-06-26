@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.service;
 
+import com.travelertown.travelertown.dto.board.NewBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.*;
 import com.travelertown.travelertown.entity.Board;
 import com.travelertown.travelertown.repository.RestaurantMapper;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class RestaurantService {
     @Autowired
     RestaurantMapper restaurantMapper;
-    public int newRestaurantBoard(NewRestaurantBoardReqDto newRestaurantBoardReqDto) {
-        return restaurantMapper.restaurantMapper(newRestaurantBoardReqDto.toEntity());
+    public int newRestaurantBoard(NewBoardReqDto newBoardReqDto) {
+        return restaurantMapper.restaurantMapper(newBoardReqDto.toEntity());
     }
 
     public GetRestaurantBoardResDto getRestaurantBoard(int boardId) {

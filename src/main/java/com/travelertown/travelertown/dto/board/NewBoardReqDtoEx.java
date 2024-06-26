@@ -1,12 +1,11 @@
-package com.travelertown.travelertown.dto.restaurant;
+package com.travelertown.travelertown.dto.board;
 
 import com.travelertown.travelertown.entity.Board;
 import lombok.Data;
 
 @Data
-public class NewRestaurantBoardReqDto {
+public class NewBoardReqDtoEx {
     private int boardCategoryId;
-    private String countryCode;
     private String boardTitle;
     private String boardContent;
     private int userId;
@@ -14,7 +13,6 @@ public class NewRestaurantBoardReqDto {
     public Board toEntity() {
         return Board.builder()
                 .boardCategoryId(boardCategoryId)
-                .countryCode(countryCode)
                 .boardTitle(boardTitle)
                 .boardContent(boardContent)
                 .userId(userId)

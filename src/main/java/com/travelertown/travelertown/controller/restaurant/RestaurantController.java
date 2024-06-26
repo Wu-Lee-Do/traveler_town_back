@@ -1,6 +1,6 @@
 package com.travelertown.travelertown.controller.restaurant;
 
-import com.travelertown.travelertown.dto.restaurant.NewRestaurantBoardReqDto;
+import com.travelertown.travelertown.dto.board.NewBoardReqDto;
 import com.travelertown.travelertown.dto.restaurant.UpdateRestaurantBoardReqDto;
 import com.travelertown.travelertown.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
     @PostMapping("/new")
-    public ResponseEntity<?> newRestaurantBoard(@RequestBody NewRestaurantBoardReqDto newRestaurantBoardReqDto) {
-        return ResponseEntity.ok(restaurantService.newRestaurantBoard(newRestaurantBoardReqDto));
+    public ResponseEntity<?> newRestaurantBoard(@RequestBody NewBoardReqDto newBoardReqDto) {
+        return ResponseEntity.ok(restaurantService.newRestaurantBoard(newBoardReqDto));
     }
 
     @GetMapping("/board/{boardId}")
