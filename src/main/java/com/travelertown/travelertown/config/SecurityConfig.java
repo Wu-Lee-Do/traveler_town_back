@@ -53,7 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/account/**",
                         "/mail/**",
                         "/country/**",
-                        "/restaurant/**",
                         "/embassy/**"
                 )
                 .permitAll()

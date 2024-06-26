@@ -1,12 +1,16 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.board.NewBoardReqDto;
+import com.travelertown.travelertown.dto.board.*;
 import com.travelertown.travelertown.entity.Board;
 import com.travelertown.travelertown.repository.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -14,16 +18,31 @@ public class BoardService {
     @Autowired
     private BoardMapper boardMapper;
 
-    public int saveBoard(NewBoardReqDto newBoardReqDto){
-        Board board = newBoardReqDto.toEntity();
-        return boardMapper.saveBoard(board);
+    public int newBoard(NewBoardReqDto newBoardReqDto){
+        return boardMapper.newBoard(newBoardReqDto.toEntity());
     }
 
-    public List<Board> getBoard(int boardCategoryId){
-        return boardMapper.getBoard(boardCategoryId);
+    public GetBoardResDto getBoard(int boardId){
+        return boardMapper.getBoard(boardId).toGetBoardResDto();
+    }
+
+    public List<GetBoardsResDto> getBoards(int boardCategoryId) {
+        return boardMapper.getBoards(boardCategoryId).stream().map(Board::toGetBoardsResDto).collect(Collectors.toList());
     }
 
     public int removeBoard(int boardId){
-        return boardMapper.deleteBoard(boardId);
+        return boardMapper.removeBoard(boardId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public int updateBoard(UpdateBoardReqDto updateBoardReqDto) {
+        return boardMapper.updateBoard(updateBoardReqDto.toEntity());
+    }
+
+    public List<GetBoardsByTitleOrCountryNameResDto> getBoardsByTitleOrCountryNameKor(int boardCategoryId, String searchText) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("boardCategoryId", boardCategoryId);
+        hashMap.put("searchText", searchText);
+        return boardMapper.getBoardsByTitleOrCountryNameKor(hashMap).stream().map(Board::toGetBoardsByTitleOrCountryNameResDto).collect(Collectors.toList());
     }
 }

@@ -1,10 +1,10 @@
-package com.travelertown.travelertown.dto.restaurant;
+package com.travelertown.travelertown.dto.board;
 
 import com.travelertown.travelertown.entity.Board;
 import lombok.Data;
 
 @Data
-public class UpdateRestaurantBoardReqDto {
+public class UpdateBoardReqDto {
     private int boardId;
     private int boardCategoryId;
     private String countryCode;

@@ -22,9 +22,9 @@ public class PermitAllFilter extends GenericFilter {
                 "/mail/authenticate",
                 "/country/all",
                 "/country/single",
-                "/restaurant",
                 "/country/getcountry",
-                "/embassy/single"
+                "/embassy/single",
+                "/board"
         );
 
         String uri = request.getRequestURI();
