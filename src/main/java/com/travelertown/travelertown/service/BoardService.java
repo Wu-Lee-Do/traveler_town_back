@@ -74,7 +74,15 @@ public class BoardService {
         return boardMapper.getBoardBookmarkByBoardIdAndUserId(boardBookmark);
     }
 
+    public List<GetBoardBookmarkByUserIdAndBoardCategoryIdResDto> getBoardBookmarkByUserId(int boardCategoryId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        return boardMapper.getBoardBookmarkByUserId(user.getUserId(), boardCategoryId);
+    }
+
     public int removeBoardBookmarkByBoardIdAndUserId(int boardBookmarkId) {
         return boardMapper.removeBoardBookmarkByBoardBookmarkId(boardBookmarkId);
     }
+
+
 }

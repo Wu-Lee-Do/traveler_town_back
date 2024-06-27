@@ -64,6 +64,12 @@ public class BoardController {
         return ResponseEntity.ok(boardService.getBoardBookmarkByBoardIdAndUserId(boardId));
     }
 
+    //유저 게시물 북마크 조회(userId)
+    @GetMapping("/bookmark/getAll")
+    public ResponseEntity<?> getBoardBookmarkByUserId(@RequestParam int boardCategoryId) {
+        return ResponseEntity.ok(boardService.getBoardBookmarkByUserId(boardCategoryId));
+    }
+
     //게시물 북마크 제거
     @DeleteMapping("/bookmark/remove")
     public ResponseEntity<?> removeBoardBookmarkByBoardBookmarkId(@RequestParam int boardBookmarkId) {
