@@ -1,7 +1,6 @@
 package com.travelertown.travelertown.controller.board;
 
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
-import com.travelertown.travelertown.dto.board.NewBoardReqDtoEx;
 import com.travelertown.travelertown.dto.board.UpdateBoardReqDto;
 import com.travelertown.travelertown.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +42,10 @@ public class BoardController {
     @GetMapping("/search")
     public ResponseEntity<?> getBoardsByTitleOrCountryNameKor(@RequestParam int boardCategoryId, @RequestParam String searchText) {
         return ResponseEntity.ok(boardService.getBoardsByTitleOrCountryNameKor(boardCategoryId, searchText));
+    }
+
+    @PostMapping("/bookmark/add")
+    public ResponseEntity<?> addBoardBookmarkByBoardId(@RequestParam int boardId) {
+        return ResponseEntity.ok(boardService.addBoardBookmarkByBoardId(boardId));
     }
 }

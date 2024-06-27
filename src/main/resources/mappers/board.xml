@@ -144,4 +144,10 @@
             bt.board_title like concat('%', #{searchText} ,'%') or
             ct.country_name_kor like concat('%', #{searchText} ,'%')
     </select>
+    <insert id="addBoardBookmarkByBoardId" parameterType="com.travelertown.travelertown.entity.BoardBookmark">
+        insert into
+            board_bookmark_tb
+        values (0, #{boardId}, #{userId} ,now(), now())
+    </insert>
+
 </mapper>

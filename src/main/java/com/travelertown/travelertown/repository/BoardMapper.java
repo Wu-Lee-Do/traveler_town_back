@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.repository;
 
 import com.travelertown.travelertown.entity.Board;
+import com.travelertown.travelertown.entity.BoardBookmark;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
@@ -17,4 +18,6 @@ public interface BoardMapper {
     public int updateBoard(Board board);
 
     public List<Board> getBoardsByTitleOrCountryNameKor(HashMap<String, Object> hashMap);
+
+    public int addBoardBookmarkByBoardId(BoardBookmark boardBookmark);
 }
