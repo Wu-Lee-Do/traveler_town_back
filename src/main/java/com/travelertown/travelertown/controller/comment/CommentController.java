@@ -1,6 +1,7 @@
 package com.travelertown.travelertown.controller.comment;
 
 import com.travelertown.travelertown.dto.comment.NewCommentReqDto;
+import com.travelertown.travelertown.dto.comment.UpdateCommentReqDto;
 import com.travelertown.travelertown.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,5 +33,10 @@ public class CommentController {
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeComment(@RequestParam int boardCommentId) {
         return ResponseEntity.ok(commentService.removeComment(boardCommentId));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> updateComment(@RequestBody UpdateCommentReqDto updateCommentReqDto) {
+        return ResponseEntity.ok(commentService.updateComment(updateCommentReqDto));
     }
 }

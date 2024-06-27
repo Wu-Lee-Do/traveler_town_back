@@ -90,4 +90,14 @@
         where
             board_comment_id = #{boardCommentId}
     </delete>
+    <update id="updateComment"
+            parameterType="com.travelertown.travelertown.entity.BoardComment">
+        update
+            board_comment_tb
+        set
+            board_comment = #{boardComment},
+            update_date = now()
+        where
+            board_comment_id = #{boardCommentId}
+    </update>
 </mapper>

@@ -14,4 +14,6 @@ public interface CommentMapper {
     public List<BoardComment> getComments(int boardId);
 
     public int removeComment(int boardCommentId);
+
+    public int updateComment(BoardComment boardComment);
 }
