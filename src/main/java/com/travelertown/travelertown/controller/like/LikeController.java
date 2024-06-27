@@ -17,6 +17,11 @@ public class LikeController {
         return ResponseEntity.ok(likeService.newLike(newLikeReqDto));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getLikes(@RequestParam int boardId) {
+        return ResponseEntity.ok(likeService.getLikes(boardId));
+    }
+
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeLike(@RequestParam int boardLikeId) {
         return ResponseEntity.ok(likeService.removeLike(boardLikeId));
