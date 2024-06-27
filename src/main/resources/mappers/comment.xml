@@ -82,4 +82,12 @@
         where
             bt.board_id = #{boardId}
     </select>
+    <delete id="removeComment"
+            parameterType="Integer">
+        delete
+        from
+            board_comment_tb
+        where
+            board_comment_id = #{boardCommentId}
+    </delete>
 </mapper>

@@ -28,4 +28,9 @@ public class CommentController {
     public ResponseEntity<?> getComments(@RequestParam int boardId) {
         return ResponseEntity.ok(commentService.getComments(boardId));
     }
+
+    @DeleteMapping("/remove")
+    public ResponseEntity<?> removeComment(@RequestParam int boardCommentId) {
+        return ResponseEntity.ok(commentService.removeComment(boardCommentId));
+    }
 }

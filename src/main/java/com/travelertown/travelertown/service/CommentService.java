@@ -29,4 +29,7 @@ public class CommentService {
         return commentMapper.getComments(boardId).stream().map(BoardComment::toGetCommentsResDto).collect(Collectors.toList());
     }
 
+    public int removeComment(int boardCommentId) {
+        return commentMapper.removeComment(boardCommentId);
+    }
 }
