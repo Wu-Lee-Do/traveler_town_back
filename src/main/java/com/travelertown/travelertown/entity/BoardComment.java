@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.entity;
 
+import com.travelertown.travelertown.controller.board.GetCommentResDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +19,19 @@ public class BoardComment {
     private int userId;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
+    private Board board;
+    private User user;
+
+    public GetCommentResDto toGetCommentResDto() {
+        return GetCommentResDto.builder()
+                .userId(user.getUserId())
+                .nickname(user.getNickname())
+                .profileImg(user.getProfileImg())
+                .boardCommentId(boardCommentId)
+                .boardId(board.getBoardId())
+                .boardComment(boardComment)
+                .createDate(createDate)
+                .updateDate(updateDate)
+                .build();
+    }
 }

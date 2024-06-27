@@ -4,10 +4,7 @@ import com.travelertown.travelertown.dto.comment.NewCommentReqDto;
 import com.travelertown.travelertown.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,4 +19,8 @@ public class CommentController {
         return ResponseEntity.ok(commentService.newComment(newCommentReqDto));
     }
 
+    @GetMapping("/{boardCommentId}")
+    public ResponseEntity<?> getComment(@PathVariable int boardCommentId) {
+        return ResponseEntity.ok(commentService.getComment(boardCommentId));
+    }
 }
