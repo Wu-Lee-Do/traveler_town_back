@@ -42,6 +42,14 @@
         <result property="climate" column="climate" />
         <result property="founding" column="founding" />
     </resultMap>
+    <resultMap id="BoardBookmarkResultMap" type="com.travelertown.travelertown.entity.BoardBookmark">
+        <id property="boardBookmarkId" column="board_bookmark_id" />
+        <result property="boardId" column="board_id" />
+        <result property="userId" column="user_id" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+
     <insert id="newBoard"
             parameterType="com.travelertown.travelertown.entity.Board"
             useGeneratedKeys="true"
@@ -149,5 +157,14 @@
             board_bookmark_tb
         values (0, #{boardId}, #{userId} ,now(), now())
     </insert>
+    <select id="getBoardBookmarkByBoardIdAndUserId" parameterType="com.travelertown.travelertown.entity.BoardBookmark" resultMap="BoardBookmarkResultMap">
+        select
+            *
+        from
+            board_bookmark_tb
+        where
+            board_id = #{boardId} and
+            user_id = #{userId}
+    </select>
 
 </mapper>

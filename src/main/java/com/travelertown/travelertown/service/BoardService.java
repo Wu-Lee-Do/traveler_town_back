@@ -63,4 +63,14 @@ public class BoardService {
                 .build();
         return boardMapper.addBoardBookmarkByBoardId(boardBookmark);
     }
+
+    public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(int boardId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        BoardBookmark boardBookmark = BoardBookmark.builder()
+                .boardId(boardId)
+                .userId(user.getUserId())
+                .build();
+        return boardMapper.getBoardBookmarkByBoardIdAndUserId(boardBookmark);
+    }
 }

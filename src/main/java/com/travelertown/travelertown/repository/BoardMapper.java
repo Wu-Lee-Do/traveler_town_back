@@ -20,4 +20,6 @@ public interface BoardMapper {
     public List<Board> getBoardsByTitleOrCountryNameKor(HashMap<String, Object> hashMap);
 
     public int addBoardBookmarkByBoardId(BoardBookmark boardBookmark);
+
+    public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(BoardBookmark boardBookmark);
 }
