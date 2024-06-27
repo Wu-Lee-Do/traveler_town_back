@@ -2,8 +2,13 @@ package com.travelertown.travelertown.service;
 
 import com.travelertown.travelertown.dto.board.*;
 import com.travelertown.travelertown.entity.Board;
+import com.travelertown.travelertown.entity.BoardBookmark;
+import com.travelertown.travelertown.entity.User;
 import com.travelertown.travelertown.repository.BoardMapper;
+import com.travelertown.travelertown.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +22,9 @@ public class BoardService {
 
     @Autowired
     private BoardMapper boardMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     public int newBoard(NewBoardReqDto newBoardReqDto){
         return boardMapper.newBoard(newBoardReqDto.toEntity());
@@ -45,4 +53,36 @@ public class BoardService {
         hashMap.put("searchText", searchText);
         return boardMapper.getBoardsByTitleOrCountryNameKor(hashMap).stream().map(Board::toGetBoardsByTitleOrCountryNameResDto).collect(Collectors.toList());
     }
+
+    public int addBoardBookmarkByBoardId(int boardId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        BoardBookmark boardBookmark = BoardBookmark.builder()
+                .boardId(boardId)
+                .userId(user.getUserId())
+                .build();
+        return boardMapper.addBoardBookmarkByBoardId(boardBookmark);
+    }
+
+    public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(int boardId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        BoardBookmark boardBookmark = BoardBookmark.builder()
+                .boardId(boardId)
+                .userId(user.getUserId())
+                .build();
+        return boardMapper.getBoardBookmarkByBoardIdAndUserId(boardBookmark);
+    }
+
+    public List<GetBoardBookmarkByUserIdAndBoardCategoryIdResDto> getBoardBookmarkByUserId(int boardCategoryId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userMapper.findUserByUsername(authentication.getName());
+        return boardMapper.getBoardBookmarkByUserId(user.getUserId(), boardCategoryId);
+    }
+
+    public int removeBoardBookmarkByBoardIdAndUserId(int boardBookmarkId) {
+        return boardMapper.removeBoardBookmarkByBoardBookmarkId(boardBookmarkId);
+    }
+
+
 }

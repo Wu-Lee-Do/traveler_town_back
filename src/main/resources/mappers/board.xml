@@ -42,6 +42,24 @@
         <result property="climate" column="climate" />
         <result property="founding" column="founding" />
     </resultMap>
+    <resultMap id="BoardBookmarkResultMap" type="com.travelertown.travelertown.entity.BoardBookmark">
+        <id property="boardBookmarkId" column="board_bookmark_id" />
+        <result property="boardId" column="board_id" />
+        <result property="userId" column="user_id" />
+        <result property="createDate" column="create_date" />
+        <result property="updateDate" column="update_date" />
+    </resultMap>
+    <resultMap id="BoardBookmarkAllResultMap" type="com.travelertown.travelertown.dto.board.GetBoardBookmarkByUserIdAndBoardCategoryIdResDto">
+        <result property="userId" column="user_id" />
+        <result property="boardId" column="board_id" />
+        <result property="boardTitle" column="board_title" />
+        <result property="boardContent" column="board_content" />
+        <result property="countryCode" column="country_code" />
+        <result property="updateDate" column="update_date" />
+        <result property="profileImg" column="profile_img" />
+        <result property="nickname" column="nickname" />
+    </resultMap>
+
     <insert id="newBoard"
             parameterType="com.travelertown.travelertown.entity.Board"
             useGeneratedKeys="true"
@@ -144,4 +162,55 @@
             bt.board_title like concat('%', #{searchText} ,'%') or
             ct.country_name_kor like concat('%', #{searchText} ,'%')
     </select>
+    <insert id="addBoardBookmarkByBoardId" parameterType="com.travelertown.travelertown.entity.BoardBookmark">
+        insert into
+            board_bookmark_tb
+        values (0, #{boardId}, #{userId} ,now(), now())
+    </insert>
+    <select id="getBoardBookmarkByBoardIdAndUserId" parameterType="com.travelertown.travelertown.entity.BoardBookmark" resultMap="BoardBookmarkResultMap">
+        select
+            *
+        from
+            board_bookmark_tb
+        where
+            board_id = #{boardId} and
+            user_id = #{userId}
+    </select>
+    <select id="getBoardBookmarkByUserId" resultMap="BoardBookmarkAllResultMap">
+        select
+            it.user_id,
+            it.board_id,
+            it.board_title,
+            it.board_content,
+            it.country_code,
+            it.update_date,
+            ut.profile_img,
+            ut.nickname
+        from
+            (
+                select
+                    bbt.board_bookmark_id,
+                    bt.user_id,
+                    bt.board_id,
+                    bt.board_title,
+                    bt.board_content,
+                    bt.country_code,
+                    bt.update_date
+                from
+                    board_bookmark_tb bbt
+                    left outer join board_tb bt on(bt.board_id = bbt.board_id AND bt.board_category_id = #{boardCategoryId})
+                where
+                    bbt.user_id = #{userId}
+            ) it
+        left outer join user_tb ut on(ut.user_id = it.user_id);
+    </select>
+    <delete id="removeBoardBookmarkByBoardBookmarkId">
+        delete
+        from
+            board_bookmark_tb
+        where
+            board_bookmark_id = #{boardBookmarkId}
+    </delete>
+
+
 </mapper>
