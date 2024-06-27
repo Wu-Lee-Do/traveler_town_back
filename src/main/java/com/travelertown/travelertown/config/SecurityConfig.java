@@ -54,7 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/mail/**",
                         "/country/**",
                         "/embassy/**",
-                        "/comment/**"
+                        "/comment/**",
+                        "/like/**"
                 )
                 .permitAll()
                 .antMatchers()
