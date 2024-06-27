@@ -73,4 +73,8 @@ public class BoardService {
                 .build();
         return boardMapper.getBoardBookmarkByBoardIdAndUserId(boardBookmark);
     }
+
+    public int removeBoardBookmarkByBoardIdAndUserId(int boardBookmarkId) {
+        return boardMapper.removeBoardBookmarkByBoardBookmarkId(boardBookmarkId);
+    }
 }

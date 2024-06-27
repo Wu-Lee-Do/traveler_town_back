@@ -22,4 +22,6 @@ public interface BoardMapper {
     public int addBoardBookmarkByBoardId(BoardBookmark boardBookmark);
 
     public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(BoardBookmark boardBookmark);
+
+    public int removeBoardBookmarkByBoardBookmarkId(int boardBookmarkId);
 }

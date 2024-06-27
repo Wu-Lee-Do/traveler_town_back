@@ -166,5 +166,13 @@
             board_id = #{boardId} and
             user_id = #{userId}
     </select>
+    <delete id="removeBoardBookmarkByBoardBookmarkId">
+        delete
+        from
+            board_bookmark_tb
+        where
+            board_bookmark_id = #{boardBookmarkId}
+    </delete>
+
 
 </mapper>
