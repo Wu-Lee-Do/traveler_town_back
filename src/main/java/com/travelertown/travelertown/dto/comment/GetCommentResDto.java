@@ -1,4 +1,4 @@
-package com.travelertown.travelertown.controller.board;
+package com.travelertown.travelertown.dto.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -23,4 +23,9 @@ public class CommentController {
     public ResponseEntity<?> getComment(@PathVariable int boardCommentId) {
         return ResponseEntity.ok(commentService.getComment(boardCommentId));
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getComments(@RequestParam int boardId) {
+        return ResponseEntity.ok(commentService.getComments(boardId));
+    }
 }
