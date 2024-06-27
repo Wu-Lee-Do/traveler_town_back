@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface LikeMapper {
     public int newLike(BoardLike boardLike);
+
+    public int removeLike(int boardLikeId);
 }

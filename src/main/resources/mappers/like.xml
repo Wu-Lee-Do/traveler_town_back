@@ -19,4 +19,13 @@
         insert into board_like_tb
         values(0, #{boardId}, #{userId}, now(), now())
     </insert>
+    <delete id="removeLike"
+            parameterType="Integer"
+    >
+        delete
+        from
+            board_like_tb
+        where
+            board_like_id = #{boardLikeId}
+    </delete>
 </mapper>

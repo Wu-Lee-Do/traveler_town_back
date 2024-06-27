@@ -14,4 +14,8 @@ public class LikeService {
         return likeMapper.newLike(newLikeReqDto.toEntity());
     }
 
+    public int removeLike(int boardLikeId) {
+        return likeMapper.removeLike(boardLikeId);
+    }
+
 }
