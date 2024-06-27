@@ -26,8 +26,8 @@ public class PermitAllFilter extends GenericFilter {
                 "/embassy/single",
                 "/board/bookmark/add",
                 "/board/bookmark/get",
-                "/board/bookmark/remove"
-
+                "/board/bookmark/remove",
+                "/comment"
         );
 
         String uri = request.getRequestURI();
