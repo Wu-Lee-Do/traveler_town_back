@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,22 +53,18 @@ public class BoardService {
         return boardMapper.getBoardsByTitleOrCountryNameKor(hashMap).stream().map(Board::toGetBoardsByTitleOrCountryNameResDto).collect(Collectors.toList());
     }
 
-    public int addBoardBookmarkByBoardId(int boardId) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userMapper.findUserByUsername(authentication.getName());
+    public int addBoardBookmarkByBoardId(BoardBookmarkReqDto boardBookmarkReqDto) {
         BoardBookmark boardBookmark = BoardBookmark.builder()
-                .boardId(boardId)
-                .userId(user.getUserId())
+                .userId(boardBookmarkReqDto.getUserId())
+                .boardId(boardBookmarkReqDto.getBoardId())
                 .build();
         return boardMapper.addBoardBookmarkByBoardId(boardBookmark);
     }
 
-    public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(int boardId) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userMapper.findUserByUsername(authentication.getName());
+    public List<BoardBookmark> getBoardBookmarkByBoardIdAndUserId(int userId, int boardId) {
         BoardBookmark boardBookmark = BoardBookmark.builder()
                 .boardId(boardId)
-                .userId(user.getUserId())
+                .userId(userId)
                 .build();
         return boardMapper.getBoardBookmarkByBoardIdAndUserId(boardBookmark);
     }

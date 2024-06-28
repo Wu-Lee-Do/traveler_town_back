@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.controller.board;
 
+import com.travelertown.travelertown.dto.board.BoardBookmarkReqDto;
 import com.travelertown.travelertown.dto.board.NewBoardReqDto;
 import com.travelertown.travelertown.dto.board.UpdateBoardReqDto;
 import com.travelertown.travelertown.service.BoardService;
@@ -54,14 +55,14 @@ public class BoardController {
 
     //게시물 북마크 추가
     @PostMapping("/bookmark/add")
-    public ResponseEntity<?> addBoardBookmarkByBoardId(@RequestParam int boardId) {
-        return ResponseEntity.ok(boardService.addBoardBookmarkByBoardId(boardId));
+    public ResponseEntity<?> addBoardBookmarkByBoardId(@RequestBody BoardBookmarkReqDto boardBookmarkReqDto) {
+        return ResponseEntity.ok(boardService.addBoardBookmarkByBoardId(boardBookmarkReqDto));
     }
 
     //게시물 북마크 조회(boardId, userId)
     @GetMapping("/bookmark/get")
-    public ResponseEntity<?> getBoardBookmarkByBoardIdAndUserId(@RequestParam int boardId) {
-        return ResponseEntity.ok(boardService.getBoardBookmarkByBoardIdAndUserId(boardId));
+    public ResponseEntity<?> getBoardBookmarkByBoardIdAndUserId(@RequestParam int userId, @RequestParam int boardId) {
+        return ResponseEntity.ok().body(boardService.getBoardBookmarkByBoardIdAndUserId(userId, boardId));
     }
 
     //유저 게시물 북마크 조회(userId)
