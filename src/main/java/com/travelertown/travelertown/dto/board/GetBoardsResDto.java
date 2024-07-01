@@ -15,6 +15,8 @@ public class GetBoardsResDto {
     int userId;
     String nickname;
     String email;
+    int sex;
+    int age;
     String profileImg;
 
     int boardId;
