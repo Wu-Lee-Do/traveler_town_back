@@ -24,6 +24,10 @@ public class Board {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
+    private int boardBookmarkCount;
+    private int boardLikeCount;
+    private int boardCommentCount;
+
     private User user;
     private Country country;
 
@@ -58,6 +62,9 @@ public class Board {
                 .boardContent(boardContent)
                 .createDate(createDate)
                 .updateDate(updateDate)
+                .boardBookmarkCount(boardBookmarkCount)
+                .boardLikeCount(boardLikeCount)
+                .boardCommentCount(boardCommentCount)
                 .build();
     }
 
