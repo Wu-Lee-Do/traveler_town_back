@@ -79,5 +79,9 @@ public class BoardService {
         return boardMapper.removeBoardBookmarkByBoardBookmarkId(boardBookmarkId);
     }
 
+    public List<GetBookmarksResDto> getBookmarks(int boardId) {
+        return boardMapper.getBookmarks(boardId).stream().map(BoardBookmark::toGetBookmarksResDto).collect(Collectors.toList());
+    }
+
 
 }
