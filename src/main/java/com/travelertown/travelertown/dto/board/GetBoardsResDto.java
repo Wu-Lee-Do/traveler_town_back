@@ -25,4 +25,8 @@ public class GetBoardsResDto {
     String boardContent;
     LocalDateTime createDate;
     LocalDateTime updateDate;
+
+    private int boardBookmarkCount;
+    private int boardLikeCount;
+    private int boardCommentCount;
 }
