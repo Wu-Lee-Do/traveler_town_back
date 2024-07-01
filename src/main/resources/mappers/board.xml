@@ -51,6 +51,8 @@
         <result property="userId" column="user_id" />
         <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
+        <association property="board" resultMap="BoardResultMap" />
+        <association property="user" resultMap="UserResultMap" />
     </resultMap>
     <resultMap id="BoardBookmarkAllResultMap" type="com.travelertown.travelertown.dto.board.GetBoardBookmarkByUserIdAndBoardCategoryIdResDto">
         <result property="userId" column="user_id" />
@@ -241,6 +243,21 @@
         where
             board_bookmark_id = #{boardBookmarkId}
     </delete>
-
+    <select id="getBookmarks"
+            resultMap="BoardBookmarkResultMap"
+            parameterType="Integer">
+        select
+            bbt.board_bookmark_id,
+            bt.board_id,
+            ut.user_id,
+            bbt.create_date,
+            bbt.update_date
+        from
+            board_bookmark_tb bbt
+            left outer join user_tb ut on(ut.user_id = bbt.user_id)
+            left outer join board_tb bt on(bt.board_id = bbt.board_id)
+        where
+            bbt.board_id = #{boardId}
+    </select>
 
 </mapper>

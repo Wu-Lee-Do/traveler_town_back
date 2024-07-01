@@ -76,4 +76,9 @@ public class BoardController {
     public ResponseEntity<?> removeBoardBookmarkByBoardBookmarkId(@RequestParam int boardBookmarkId) {
         return ResponseEntity.ok(boardService.removeBoardBookmarkByBoardIdAndUserId(boardBookmarkId));
     }
+
+    @GetMapping("/bookmark/all")
+    public ResponseEntity<?> getBookmarks(@RequestParam int boardId) {
+        return ResponseEntity.ok(boardService.getBookmarks(boardId));
+    }
 }
