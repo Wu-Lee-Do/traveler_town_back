@@ -105,6 +105,8 @@
             ut.user_id,
             ut.nickname,
             ut.email,
+            ut.sex,
+            ut.age,
             ut.profile_img,
             bt.board_id,
             ct.country_code,

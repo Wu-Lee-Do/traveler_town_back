@@ -53,6 +53,8 @@ public class Board {
                 .userId(user.getUserId())
                 .nickname(user.getNickname())
                 .email(user.getEmail())
+                .sex(user.getSex())
+                .age(user.getAge())
                 .profileImg(user.getProfileImg())
                 .boardId(boardId)
                 .boardCategoryId(boardCategoryId)
