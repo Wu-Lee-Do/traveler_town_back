@@ -67,8 +67,8 @@ public class BoardController {
 
     //유저 게시물 북마크 조회(userId)
     @GetMapping("/bookmark/getAll")
-    public ResponseEntity<?> getBoardBookmarkByUserId(@RequestParam int boardCategoryId) {
-        return ResponseEntity.ok(boardService.getBoardBookmarkByUserId(boardCategoryId));
+    public ResponseEntity<?> getBoardBookmarkByUserId(@RequestParam int boardCategoryId, @RequestParam int userId) {
+        return ResponseEntity.ok(boardService.getBoardBookmarkByUserId(boardCategoryId, userId));
     }
 
     //게시물 북마크 제거
