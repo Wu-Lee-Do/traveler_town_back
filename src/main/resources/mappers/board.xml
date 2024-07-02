@@ -232,6 +232,7 @@
             (
                 SELECT
                     bbt.board_bookmark_id,
+                    bt.board_category_id,
                     bt.user_id,
                     bt.board_id,
                     bt.board_title,
@@ -264,7 +265,9 @@
             GROUP BY
                 board_id
         ) bl ON bl.board_id = it.board_id
-        LEFT OUTER JOIN country_tb ct ON ct.country_code = it.country_code;
+        LEFT OUTER JOIN country_tb ct ON ct.country_code = it.country_code
+        WHERE
+        it.board_category_id = #{boardCategoryId}
     </select>
     <delete id="removeBoardBookmarkByBoardBookmarkId">
         delete
