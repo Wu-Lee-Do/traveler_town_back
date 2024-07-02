@@ -60,9 +60,13 @@
         <result property="boardTitle" column="board_title" />
         <result property="boardContent" column="board_content" />
         <result property="countryCode" column="country_code" />
+        <result property="countryNameKor" column="country_name_kor" />
+        <result property="createDate" column="create_date" />
         <result property="updateDate" column="update_date" />
         <result property="profileImg" column="profile_img" />
         <result property="nickname" column="nickname" />
+        <result property="boardBookmarkCount" column="board_bookmark_count" />
+        <result property="boardLikeCount" column="board_like_count" />
     </resultMap>
 
     <insert id="newBoard"
@@ -211,32 +215,56 @@
             user_id = #{userId}
     </select>
     <select id="getBoardBookmarkByUserId" resultMap="BoardBookmarkAllResultMap">
-        select
+        SELECT
             it.user_id,
             it.board_id,
             it.board_title,
             it.board_content,
             it.country_code,
+            ct.country_name_kor,
+            it.create_date,
             it.update_date,
             ut.profile_img,
-            ut.nickname
-        from
+            ut.nickname,
+            COALESCE(bbm.board_bookmark_count, 0) AS board_bookmark_count,
+            COALESCE(bl.board_like_count, 0) AS board_like_count
+        FROM
             (
-                select
+                SELECT
                     bbt.board_bookmark_id,
                     bt.user_id,
                     bt.board_id,
                     bt.board_title,
                     bt.board_content,
                     bt.country_code,
+                    bt.create_date,
                     bt.update_date
-                from
+                FROM
                     board_bookmark_tb bbt
-                    left outer join board_tb bt on(bt.board_id = bbt.board_id AND bt.board_category_id = #{boardCategoryId})
-                where
+                    LEFT OUTER JOIN board_tb bt ON(bt.board_id = bbt.board_id AND bt.board_category_id = #{boardCategoryId})
+                WHERE
                     bbt.user_id = #{userId}
-            ) it
-        left outer join user_tb ut on(ut.user_id = it.user_id);
+        ) it
+        LEFT OUTER JOIN user_tb ut ON ut.user_id = it.user_id
+        LEFT OUTER JOIN (
+            SELECT
+                board_id,
+                COUNT(*) AS board_bookmark_count
+            FROM
+                board_bookmark_tb
+            GROUP BY
+                board_id
+        ) bbm ON bbm.board_id = it.board_id
+        LEFT OUTER JOIN (
+            SELECT
+                board_id,
+                COUNT(*) AS board_like_count
+            FROM
+                board_like_tb
+            GROUP BY
+                board_id
+        ) bl ON bl.board_id = it.board_id
+        LEFT OUTER JOIN country_tb ct ON ct.country_code = it.country_code;
     </select>
     <delete id="removeBoardBookmarkByBoardBookmarkId">
         delete
