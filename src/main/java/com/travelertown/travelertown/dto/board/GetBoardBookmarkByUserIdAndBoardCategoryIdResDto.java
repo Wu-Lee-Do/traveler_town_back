@@ -24,4 +24,5 @@ public class GetBoardBookmarkByUserIdAndBoardCategoryIdResDto {
     private String nickname;
     private int boardBookmarkCount;
     private int boardLikeCount;
+    private int boardCommentCount;
 }
