@@ -29,7 +29,8 @@ public class PermitAllFilter extends GenericFilter {
                 "/board/bookmark/remove",
                 "/comment",
                 "/like",
-                "/board/bookmark/all"
+                "/board/bookmark/all",
+                "/board"
         );
 
         String uri = request.getRequestURI();
@@ -44,4 +45,5 @@ public class PermitAllFilter extends GenericFilter {
 
 
     }
+
 }
