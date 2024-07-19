@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Component
 public class PermitAllFilter extends GenericFilter {
@@ -31,16 +30,14 @@ public class PermitAllFilter extends GenericFilter {
                 "/comment",
                 "/like",
                 "/board/bookmark/all",
-                "/board/",
-                "/board/all"
+                "/board"
         );
 
         String uri = request.getRequestURI();
         request.setAttribute("isPermitAll", false);
-        for (String antMatcher : antMatchers) {
-            if (matches(uri, antMatcher)) {
+        for(String antMatcher : antMatchers) {
+            if(uri.startsWith(antMatcher)) {
                 request.setAttribute("isPermitAll", true);
-                break;  // 일치하는 패턴이 있으면 더 이상 확인하지 않음
             }
         }
 
@@ -49,11 +46,4 @@ public class PermitAllFilter extends GenericFilter {
 
     }
 
-    private boolean matches(String uri, String pattern) {
-        if (pattern.equals("/board/")) {
-            return Pattern.matches("^/board/\\d+$", uri);  // 숫자로 끝나는 /board/ 경로 매칭
-        } else {
-            return uri.equals(pattern);
-        }
-    }
 }
