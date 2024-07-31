@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.repository;
 
+import com.travelertown.travelertown.entity.OAuth2.OAuth2;
 import com.travelertown.travelertown.entity.RoleRegister;
 import com.travelertown.travelertown.entity.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,6 +13,7 @@ public interface UserMapper {
     public User findUserByEmail(String email);
     public User findUserByOAuth2name(String name);
     public int saveUser(User user);
+    public int saveOAuth2(OAuth2 oAuth2);
     public RoleRegister findRoleRegisterByUserIdAndRoleId(@Param("userId") int userId, @Param("roleId") int roleId);
     public int saveRole(@Param("userId") int userId, @Param("roleId") int roleId);
     public int modifyPassword(User user);
