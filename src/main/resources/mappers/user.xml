@@ -95,7 +95,7 @@
             rrt.role_register_id,
             rrt.role_id,
             rt.role_name,
-            rt.role_name_kor
+            rt.role_name_kor,
             oat.oauth2_id,
             oat.oauth2_name,
             oat.provider_name
@@ -123,7 +123,7 @@
             rrt.role_register_id,
             rrt.role_id,
             rt.role_name,
-            rt.role_name_kor
+            rt.role_name_kor,
             oat.oauth2_id,
             oat.oauth2_name,
             oat.provider_name
@@ -151,7 +151,7 @@
             rrt.role_register_id,
             rrt.role_id,
             rt.role_name,
-            rt.role_name_kor
+            rt.role_name_kor,
             oat.oauth2_id,
             oat.oauth2_name,
             oat.provider_name
