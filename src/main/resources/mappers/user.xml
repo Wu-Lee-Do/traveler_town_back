@@ -96,14 +96,14 @@
             rrt.role_id,
             rt.role_name,
             rt.role_name_kor
-<!--            oat.oauth2_id,-->
-<!--            oat.oauth2_name,-->
-<!--            oat.provider_name-->
+            oat.oauth2_id,
+            oat.oauth2_name,
+            oat.provider_name
         from
             user_tb ut
             left outer join role_register_tb rrt on(rrt.user_id = ut.user_id)
             left outer join role_tb rt on(rt.role_id = rrt.role_id)
-<!--            left outer join oauth2_tb oat on(oat.user_id = ut.user_id)-->
+            left outer join oauth2_tb oat on(oat.user_id = ut.user_id)
         where
             username = #{username}
     </select>
