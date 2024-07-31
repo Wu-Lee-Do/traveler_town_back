@@ -10,6 +10,7 @@ public interface UserMapper {
     public User findUserByUsername(String username);
     public User findUserByNickname(String nickname);
     public User findUserByEmail(String email);
+    public User findUserByOAuth2name(String name);
     public int saveUser(User user);
     public RoleRegister findRoleRegisterByUserIdAndRoleId(@Param("userId") int userId, @Param("roleId") int roleId);
     public int saveRole(@Param("userId") int userId, @Param("roleId") int roleId);
