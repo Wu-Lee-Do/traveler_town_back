@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.entity;
 
+import com.travelertown.travelertown.entity.OAuth2.OAuth2;
 import com.travelertown.travelertown.security.PrincipalUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +29,7 @@ public class User {
     private LocalDateTime updateDate;
 
     private List<RoleRegister> roleRegisters;
-//    private List<OAuth2> oAuth2s;
+    private List<OAuth2> oAuth2s;
 
     public List<SimpleGrantedAuthority> getAuthorities() {
 //        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
