@@ -32,7 +32,7 @@ public class OAuth2PrincipalUserService implements OAuth2UserService {
                 name = response.get("name").toString();
                 break;
             case "Kakao":
-                name = attributes.get("name").toString();
+                name = attributes.get("profile_nickname").toString();
                 break;
         }
         newAttributes = Map.of("name", name, "provider", provider);
