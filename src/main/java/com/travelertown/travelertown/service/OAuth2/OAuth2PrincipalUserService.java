@@ -19,6 +19,7 @@ public class OAuth2PrincipalUserService implements OAuth2UserService {
         OAuth2User oAuth2User = oAuth2UserService.loadUser(userRequest);
         Map<String, Object> attributes = oAuth2User.getAttributes();
         System.out.println(attributes);
+        System.out.println("들어가기 직전");
 
         String provider = userRequest.getClientRegistration().getClientName();
         Map<String, Object> newAttributes = null;
@@ -32,7 +33,9 @@ public class OAuth2PrincipalUserService implements OAuth2UserService {
                 name = response.get("name").toString();
                 break;
             case "Kakao":
-                name = attributes.get("profile_nickname").toString();
+                System.out.println("카카오진입");
+                Map<String,Object> properties = (Map<String, Object>) attributes.get("properties");
+                name = properties.get("nickname").toString();
                 break;
         }
         newAttributes = Map.of("name", name, "provider", provider);
