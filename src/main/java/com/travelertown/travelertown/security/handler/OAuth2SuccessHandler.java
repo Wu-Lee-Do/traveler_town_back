@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Component
 public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
@@ -28,6 +29,9 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         System.out.println("여기야 여기" + authentication);
         String name = authentication.getName();
         User user = userMapper.findUserByOAuth2name(name);
@@ -38,7 +42,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             DefaultOAuth2User oAuth2User= (DefaultOAuth2User) authentication.getPrincipal();
             String providerName = oAuth2User.getAttribute("provider").toString();
 
-            response.sendRedirect("http://" + clientAddress + "/oauth2?name=" + name + "&provider=" + providerName);
+            response.sendRedirect("http://" + clientAddress + "/oauth2?name=" + URLEncoder.encode(name, "UTF-8") + "&provider=" + providerName);
             return;
         }
 
