@@ -24,6 +24,7 @@ public class OAuth2PrincipalUserService implements OAuth2UserService {
         String provider = userRequest.getClientRegistration().getClientName();
         Map<String, Object> newAttributes = null;
         String name = null;
+        String id = null;
         switch (provider) {
             case "Google":
                 name = attributes.get("sub").toString();
@@ -31,14 +32,16 @@ public class OAuth2PrincipalUserService implements OAuth2UserService {
             case "Naver":
                 Map<String,Object> response = (Map<String, Object>) attributes.get("response");
                 name = response.get("name").toString();
+                id = response.get("id").toString();
                 break;
             case "Kakao":
                 System.out.println("카카오진입");
                 Map<String,Object> properties = (Map<String, Object>) attributes.get("properties");
                 name = properties.get("nickname").toString();
+                id = attributes.get("id").toString();
                 break;
         }
-        newAttributes = Map.of("name", name, "provider", provider);
+        newAttributes = Map.of("name", name, "provider", provider, "id", id);
         return new DefaultOAuth2User(oAuth2User.getAuthorities(), newAttributes, "name");
 
     }
