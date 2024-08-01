@@ -11,13 +11,13 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class OAuth2SignupReqDto {
-    @Pattern(regexp = "^[A-Za-z0-9]{4,10}$", message = "아이디는 영문자, 숫자 5 ~ 10자리 형식이어야 합니다.")
+    @Pattern(regexp = "^[A-Za-z0-9]{4,14}$", message = "대소문자, 숫자 5 ~ 14자리 형식이어야 합니다.")
     private String username;
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{7,128}$",message = "비밀번호는 영문자, 숫자, 특수문자를 포함한 5  5 ~ 128자리 형식이어야 합니다.")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{7,128}$", message = "하나 이상의 영문자, 숫자, 특수문자를 포함한 8 ~ 128자리 형식이어야 합니다.")
     private String password;
-    @Pattern(regexp = "^[가-힇]{1,}$",message = "이름은 한글문자 형식이어야 합니다.")
     private String nickname;
-    @Email(regexp = "^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\\.[a-zA-Z]{1,3}$",message = "이메일 형식이어야 합니다.") //0314-2
+    @NotBlank
+    @Email
     private String email;
     @NotBlank
     private String oauth2Name;
@@ -33,10 +33,10 @@ public class OAuth2SignupReqDto {
                 .build();
     }
 
-    public OAuth2 toOAuth2Entity(int adminId) {
+    public OAuth2 toOAuth2Entity(int userId) {
         return OAuth2.builder()
                 .oAuth2Name(oauth2Name)
-                .userId(adminId)
+                .userId(userId)
                 .providerName(providerName)
                 .build();
     }
