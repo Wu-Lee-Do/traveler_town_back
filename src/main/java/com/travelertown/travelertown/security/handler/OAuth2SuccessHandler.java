@@ -41,8 +41,9 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             System.out.println("여기로 와라랏");
             DefaultOAuth2User oAuth2User= (DefaultOAuth2User) authentication.getPrincipal();
             String providerName = oAuth2User.getAttribute("provider").toString();
+            String id = oAuth2User.getAttribute("id").toString();
 
-            response.sendRedirect("http://" + clientAddress + "/oauth2?name=" + URLEncoder.encode(name, "UTF-8") + "&provider=" + providerName);
+            response.sendRedirect("http://" + clientAddress + "/oauth2?name=" + URLEncoder.encode(name, "UTF-8") + "&provider=" + providerName + "&id=" + id);
             return;
         }
 
