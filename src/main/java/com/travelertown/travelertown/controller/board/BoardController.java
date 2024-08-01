@@ -33,6 +33,13 @@ public class BoardController {
         return ResponseEntity.ok().body(boardService.getBoards(boardCategoryId));
     }
 
+    //유저아이디 게시물 전체 조회
+    @GetMapping("/allByUserId")
+    public ResponseEntity<?> getBoardsByUserId(@RequestParam int userId) {
+        System.out.println("들어왔따!!!" + userId);
+        return ResponseEntity.ok().body(boardService.getBoardsByUserId(userId));
+    }
+
     //게시물 삭제
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeBoard(@RequestParam int boardId) {

@@ -303,5 +303,55 @@
         where
             bbt.board_id = #{boardId}
     </select>
+    <select id="getBoardsByUserId" parameterType="integer" resultMap="BoardResultMap">
+        select
+            ut.user_id,
+            ut.nickname,
+            ut.email,
+            ut.sex,
+            ut.age,
+            ut.profile_img,
+            bt.board_id,
+            ct.country_code,
+            ct.country_name_kor,
+            bt.board_category_id,
+            bt.board_title,
+            bt.board_content,
+            bt.create_date,
+            bt.update_date,
+            coalesce(bbt.board_bookmark_count, 0) as board_bookmark_count,
+            coalesce(blt.board_like_count, 0) as board_like_count,
+            coalesce(bct.board_comment_count, 0) as board_comment_count
+        from
+            board_tb bt
+            left outer join user_tb ut on ut.user_id = bt.user_id
+            left outer join country_tb ct on ct.country_code = bt.country_code
+            left outer join (
+                select
+                    board_id, count(*) as board_bookmark_count
+                from
+                    board_bookmark_tb
+                    group by
+                board_id
+            ) bbt on bbt.board_id = bt.board_id
+            left outer join (
+                select
+                    board_id, count(*) as board_like_count
+                from
+                    board_like_tb
+                group by
+                    board_id
+            ) blt on blt.board_id = bt.board_id
+            left outer join (
+                select
+                    board_id, count(*) as board_comment_count
+                from
+                    board_comment_tb
+                group by
+                    board_id
+            ) bct on bct.board_id = bt.board_id
+        where
+            bt.user_id = #{userId}
+    </select>
 
 </mapper>
