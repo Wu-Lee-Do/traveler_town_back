@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Map;
 
 @Component
 public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
@@ -33,8 +34,10 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         response.setCharacterEncoding("UTF-8");
 
         System.out.println("여기야 여기" + authentication);
+        DefaultOAuth2User defaultOAuth2User= (DefaultOAuth2User) authentication.getPrincipal();
+        String oauthId = defaultOAuth2User.getAttribute("id").toString();
         String name = authentication.getName();
-        User user = userMapper.findUserByOAuth2name(name);
+        User user = userMapper.findUserByOAuth2name(oauthId);
         System.out.println("user:" + user);
 
         if(user == null ) {
