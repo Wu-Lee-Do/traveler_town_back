@@ -11,9 +11,13 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     public int newBoard(Board board);
+
     public Board getBoard(int boardId);
 
     public List<Board> getBoards(int boardCategoryId);
+
+    public List<Board> getBoardsByUserId(int userId);
+
     public int removeBoard(int boardId);
 
     public int updateBoard(Board board);

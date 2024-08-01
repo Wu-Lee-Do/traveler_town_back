@@ -37,6 +37,10 @@ public class BoardService {
         return boardMapper.getBoards(boardCategoryId).stream().map(Board::toGetBoardsResDto).collect(Collectors.toList());
     }
 
+    public List<GetBoardsResDto> getBoardsByUserId(int userId) {
+        return boardMapper.getBoardsByUserId(userId).stream().map(Board::toGetBoardsResDto).collect(Collectors.toList());
+    }
+
     public int removeBoard(int boardId){
         return boardMapper.removeBoard(boardId);
     }
