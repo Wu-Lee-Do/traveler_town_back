@@ -22,6 +22,12 @@ public class LikeController {
         return ResponseEntity.ok(likeService.getLikes(boardId));
     }
 
+    @GetMapping("/likeBoardAll")
+    public ResponseEntity<?> getLikeBoardsByUserId(@RequestParam int userId) {
+        System.out.println("들어옴?????");
+        return ResponseEntity.ok().body(likeService.getLikeBoardsByUserId(userId));
+    }
+
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeLike(@RequestParam int boardLikeId) {
         return ResponseEntity.ok(likeService.removeLike(boardLikeId));
