@@ -1,5 +1,6 @@
 package com.travelertown.travelertown.entity;
 
+import com.travelertown.travelertown.dto.account.ProfileRespDto;
 import com.travelertown.travelertown.entity.OAuth2.OAuth2;
 import com.travelertown.travelertown.security.PrincipalUser;
 import lombok.AllArgsConstructor;
@@ -56,6 +57,20 @@ public class User {
                 .age(age)
                 .profileImg(profileImg)
                 .authorities(getAuthorities())
+                .build();
+    }
+
+    public ProfileRespDto toProfileRespDto() {
+        return ProfileRespDto.builder()
+                .userId(userId)
+                .username(username)
+                .nickname(nickname)
+                .email(email)
+                .sex(sex)
+                .age(age)
+                .profileImg(profileImg)
+                .createDate(createDate)
+                .updateDate(updateDate)
                 .build();
     }
 }

@@ -28,6 +28,11 @@ public class AccountController {
         return ResponseEntity.ok(principalUser);
     }
 
+    @GetMapping("/getProfile")
+    public ResponseEntity<?> getUserByNickname(@RequestParam String nickname) {
+        return ResponseEntity.ok().body(accountService.getUserByNickname(nickname));
+    }
+
     @PutMapping("/password")
     public ResponseEntity<?> editPassword(@RequestBody EditPasswordReqDto editPasswordReqDto, BindingResult bindingResult) {
         accountService.editPassword(editPasswordReqDto);
