@@ -1,9 +1,6 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.account.EditAgeReqDto;
-import com.travelertown.travelertown.dto.account.EditImgReqDto;
-import com.travelertown.travelertown.dto.account.EditPasswordReqDto;
-import com.travelertown.travelertown.dto.account.EditSexReqDto;
+import com.travelertown.travelertown.dto.account.*;
 import com.travelertown.travelertown.entity.User;
 import com.travelertown.travelertown.exception.ValidException;
 import com.travelertown.travelertown.repository.UserMapper;
@@ -61,6 +58,12 @@ public class AccountService {
         User user = userMapper.findUserByUsername(authentication.getName());
         user.setProfileImg(editImgReqDto.getProfileImg());
         userMapper.editImg(user);
+    }
+
+    public ProfileRespDto getUserByNickname(String nickname) {
+        User user = userMapper.findUserByNickname(nickname);
+        ProfileRespDto profileRespDto = user.toProfileRespDto();
+        return profileRespDto;
     }
 
 }
