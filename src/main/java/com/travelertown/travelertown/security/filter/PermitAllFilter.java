@@ -31,7 +31,8 @@ public class PermitAllFilter extends GenericFilter {
                 "/like",
                 "/board/bookmark/all",
                 "/board",
-                "/follow"
+                "/follow",
+                "/account/getProfile"
         );
 
         String uri = request.getRequestURI();
