@@ -30,7 +30,8 @@ public class PermitAllFilter extends GenericFilter {
                 "/comment",
                 "/like",
                 "/board/bookmark/all",
-                "/board"
+                "/board",
+                "/follow"
         );
 
         String uri = request.getRequestURI();
