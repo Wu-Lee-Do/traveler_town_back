@@ -4,10 +4,32 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.travelertown.travelertown.repository.FollowMapper">
-
+    <resultMap id="followResultMap" type="com.travelertown.travelertown.entity.User">
+        <id property="userId" column="user_id" />
+        <result property="nickname" column="nickname" />
+        <result property="profileImg" column="profile_img" />
+    </resultMap>
     <insert id="follow" parameterType="integer">
         insert into
             follows_tb
         values(#{followerId}, #{followingId}, now())
     </insert>
+    <delete id="unFollow" parameterType="integer">
+        delete from
+            follows_tb
+        where
+            follower_id = #{followerId} AND following_id = #{followingId};
+    </delete>
+    <select id="getFollowers" parameterType="integer" resultMap="followResultMap">
+        SELECT
+            ut.user_id,
+            ut.nickname,
+            ut.profile_img
+        FROM
+            user_tb ut
+        JOIN
+            follows_tb ft ON ut.user_id = ft.follower_id
+        WHERE
+            ft.following_id = #{userId};
+    </select>
 </mapper>
