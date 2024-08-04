@@ -1,7 +1,7 @@
 package com.travelertown.travelertown.entity;
 
 import com.travelertown.travelertown.dto.account.ProfileRespDto;
-import com.travelertown.travelertown.dto.follow.GetFollowersRespDto;
+import com.travelertown.travelertown.dto.follow.GetFollowerRespDto;
 import com.travelertown.travelertown.entity.OAuth2.OAuth2;
 import com.travelertown.travelertown.security.PrincipalUser;
 import lombok.AllArgsConstructor;
@@ -75,8 +75,8 @@ public class User {
                 .build();
     }
 
-    public GetFollowersRespDto toGetFollowersRespDto() {
-        return GetFollowersRespDto.builder()
+    public GetFollowerRespDto toGetFollowRespDto() {
+        return GetFollowerRespDto.builder()
                 .userId(userId)
                 .nickname(nickname)
                 .profileImg(profileImg)

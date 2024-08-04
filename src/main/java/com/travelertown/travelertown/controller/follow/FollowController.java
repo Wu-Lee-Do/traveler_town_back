@@ -26,4 +26,9 @@ public class FollowController {
     public ResponseEntity<?> getFollowers(@RequestParam int userId){
         return ResponseEntity.ok().body(followService.getFollowers(userId));
     }
+
+    @GetMapping("/followings")
+    public ResponseEntity<?> getFollowings(@RequestParam int userId) {
+        return ResponseEntity.ok().body(followService.getFollowings(userId));
+    }
 }

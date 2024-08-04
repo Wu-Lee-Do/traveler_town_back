@@ -1,6 +1,6 @@
 package com.travelertown.travelertown.service;
 
-import com.travelertown.travelertown.dto.follow.GetFollowersRespDto;
+import com.travelertown.travelertown.dto.follow.GetFollowerRespDto;
 import com.travelertown.travelertown.entity.User;
 import com.travelertown.travelertown.repository.FollowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,11 @@ public class FollowService {
         return followMapper.unFollow(followerId, followingId);
     }
 
-    public List<GetFollowersRespDto> getFollowers(int userId){
-       return followMapper.getFollowers(userId).stream().map(User::toGetFollowersRespDto).collect(Collectors.toList());
+    public List<GetFollowerRespDto> getFollowers(int userId){
+       return followMapper.getFollowers(userId).stream().map(User::toGetFollowRespDto).collect(Collectors.toList());
+    }
+
+    public List<GetFollowerRespDto> getFollowings(int userId) {
+        return followMapper.getFollowings(userId).stream().map(User::toGetFollowRespDto).collect(Collectors.toList());
     }
 }

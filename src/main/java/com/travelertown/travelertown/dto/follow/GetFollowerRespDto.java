@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetFollowersRespDto {
+public class GetFollowerRespDto {
     private int userId;
     private String nickname;
     private String profileImg;

@@ -10,4 +10,5 @@ public interface FollowMapper {
     public int follow(int followerId, int followingId);
     public int unFollow(int followerId, int followingId);
     public List<User> getFollowers(int userId);
+    public List<User> getFollowings(int userId);
 }
